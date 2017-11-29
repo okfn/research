@@ -9,5 +9,8 @@ env:
   - secure: Rharntbe9XKiqOS757UpDkAL6Q6b6Z6m/03eoLsO0y5lu19mN9ieECMrq5kqJV4H7+5SENLSG7KC1jJRxo8mfUolRMZNJzzpDVb4Cj4y6s4mof2uy0FBQ66YfnhZCdsqcpVDmWL1EUpmfXWSDB5v5HqY9Cs9XoTAsADfENs41mTMocbeSSYFme2I7r0h2X+nRPw1ScPW1wGCcF3a0RzfSWNm/cn/L0WsAE/bqhAynFT+GzzUt7xyKxGf0NkdqkqmpaY/exYBlYmrpTlSnkFR/lFtJkKAoXUspl/IJM1qFexn05vXfk5Fm9tLi+xGCyVzAmI8XCF9dz6m7CcU8E7TJxDGsEUq2X1CRgzv8fO1z7RJ3AKAlV//+jeMJEvGRzIxuo2eYXVqeLUuo2UAwRbMaXktUdhPrEFlPgW6UY1+BzqBLuscf846OoHsZ7AA9rMk05NdEPC/dFGNCrKS+9TThSV8id1dmY629tzNR35KGWbXsSF36n0wvyMdvKrBfnxRWsqvwSpu5G/tEgB9tGBjM0V0mLphPU7GnflJ9f59Zey+8vuD2MoNvKQTIgyw1AlOgOiOSoRgECIxV5Ei9wMtMutFzaFdeK7LsWtcsUb+BRkyd4+au5/KnTF7W9yU+WUUPTTUzVLsyl8bSgZ3rl2ME4fyWWA1Xp2B9SuURz99nfs=
 install:
 - pip install awscli
-script:
-- aws s3 sync research s3://research.okfn.org
+deploy:
+  provider: script
+  script: aws s3 sync research s3://research.okfn.org
+  on:
+    branch: master
