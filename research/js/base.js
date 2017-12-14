@@ -1,18 +1,30 @@
 $(document).ready(function() {
   $('.cover .title, .cover .sub-title, .cover .author, .cover .affiliation').lettering('words');
+  var contentsNav = $('.contents nav');
 
-  $(window).scroll(function(){
+  $(window).scroll(debounce(function(){
     if ($(window).scrollTop() >= $(window).height()) {
-      $('.contents nav').addClass('scrolled-to');
+      contentsNav.addClass('scrolled-to');
     }
     else {
-      $('.contents nav').removeClass('scrolled-to');
+      contentsNav.removeClass('scrolled-to');
     }
-  });
+  }, 25));
 
   $('.toggle-contents').on('click', function(e) {
-    $('.contents nav').toggleClass("show");
+    contentsNav.toggleClass('show');
     e.preventDefault();
   });
 
+  function debounce(fn, milliseconds) {
+    var timer;
+
+    return function() {
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(fn, milliseconds);
+    }
+  }
 });
