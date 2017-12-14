@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Avoiding data use silos: How governments can simplify the open licensing landscape</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles/base.css">
+    <link rel="stylesheet" href="../css/avoiding-data-use-silos/style.css">
+  </head>
+  <body>
+    <header class="cover">
+      <div class="container">
+        <div class="date">
+          December 2017
+        </div>
+        <div class="copy">
+          <h1 class="title">Avoiding data use silos</h1>
+          <p class="sub-title">How governments can simplify the open licensing landscape</p>
+          <p class="authors"><a class="author">Danny Lämmerhirt,</a> <span class="affiliation">Researcher and Research Coordinator, Open Knowledge International</span></p>
+        </div>
+        <div class="logos">
+          <a class="oki logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 935.45 243.64"><title>Open Knowledge International</title><path class="a" d="M306.63,104.68A20,20,0,0,0,311,97.87a24.24,24.24,0,0,0,0-17.07,19.85,19.85,0,0,0-11.18-11.34,24.53,24.53,0,0,0-17.63,0A20.4,20.4,0,0,0,275.38,74a20,20,0,0,0-4.39,6.8,24.33,24.33,0,0,0,0,17.1,19.93,19.93,0,0,0,4.39,6.82,20.4,20.4,0,0,0,6.82,4.51,24.53,24.53,0,0,0,17.63,0A20.24,20.24,0,0,0,306.63,104.68ZM291,103.49a13.76,13.76,0,0,1-5.31-1,10.84,10.84,0,0,1-4-2.8,12.43,12.43,0,0,1-2.51-4.45,20.74,20.74,0,0,1,0-11.89,12.56,12.56,0,0,1,2.51-4.47,10.78,10.78,0,0,1,4-2.81,14.94,14.94,0,0,1,10.6,0,10.8,10.8,0,0,1,4,2.81,12.56,12.56,0,0,1,2.51,4.47,20.74,20.74,0,0,1,0,11.89,12.43,12.43,0,0,1-2.51,4.45,10.87,10.87,0,0,1-4,2.8A13.65,13.65,0,0,1,291,103.49Z"/><path class="a" d="M354.84,92a11.62,11.62,0,0,0,3.07-4.44,15.4,15.4,0,0,0,1-5.68,14.82,14.82,0,0,0-1-5.42,11.11,11.11,0,0,0-3-4.31,14.23,14.23,0,0,0-5.18-2.83,24.47,24.47,0,0,0-7.47-1H328.1v42.08h8.7V95.89h5.51a23.54,23.54,0,0,0,7.34-1A14.3,14.3,0,0,0,354.84,92Zm-12.53-2.75H336.8V74.9h5.51a11.13,11.13,0,0,1,3.51.49,6.51,6.51,0,0,1,2.45,1.41,5.69,5.69,0,0,1,1.45,2.2,8.15,8.15,0,0,1,.48,2.86,7.45,7.45,0,0,1-1.9,5.39Q346.4,89.22,342.31,89.22Z"/><polygon class="a" points="400.43 103.55 382.39 103.55 382.39 92.5 396.43 92.5 396.43 85.92 382.39 85.92 382.39 75.1 400.43 75.1 400.43 68.28 373.63 68.28 373.63 110.36 400.43 110.36 400.43 103.55"/><path class="a" d="M423.6,82.23l21,26.65a4.13,4.13,0,0,0,1.36,1.14,3.94,3.94,0,0,0,1.71.33h4.5V68.29h-7.69V92.36q0,.93.06,2t.17,2.15L423.57,69.65a5.86,5.86,0,0,0-.64-.7,2.75,2.75,0,0,0-.61-.42,2.07,2.07,0,0,0-.71-.2,8.61,8.61,0,0,0-.94,0h-4.58v42.08h7.68V86q0-.84,0-1.81T423.6,82.23Z"/><path class="a" d="M521.91,110.36h7.74L515.91,90.73A8.37,8.37,0,0,0,514.34,89a7.1,7.1,0,0,0-1.83-1.06,8.51,8.51,0,0,0,2.7-2.41l13.4-17.25h-7.54a5.52,5.52,0,0,0-2.2.39,4.19,4.19,0,0,0-1.65,1.41L506.57,84.32a3.55,3.55,0,0,1-3.1,1.33h-1.71V68.29h-8.7v42.08h8.7V92.12h2.44a5.38,5.38,0,0,1,2.12.33,3.17,3.17,0,0,1,1.3,1.12l10.82,15.14a4.71,4.71,0,0,0,.55.71,2.48,2.48,0,0,0,.7.51,4,4,0,0,0,.94.32A6.13,6.13,0,0,0,521.91,110.36Z"/><path class="a" d="M550.21,86q0-.84,0-1.81t-.13-2l21,26.65a4.13,4.13,0,0,0,1.36,1.14,3.94,3.94,0,0,0,1.71.33h4.5V68.29h-7.69V92.36q0,.93.06,2t.17,2.15L550,69.65a5.86,5.86,0,0,0-.64-.7,2.75,2.75,0,0,0-.61-.42,2.07,2.07,0,0,0-.71-.2,8.61,8.61,0,0,0-.94,0h-4.58v42.08h7.68Z"/><path class="a" d="M635.66,97.87a24.24,24.24,0,0,0,0-17.07,19.85,19.85,0,0,0-11.18-11.34,24.53,24.53,0,0,0-17.63,0A20.4,20.4,0,0,0,600,74a20,20,0,0,0-4.39,6.8,24.33,24.33,0,0,0,0,17.1,19.93,19.93,0,0,0,4.39,6.82,20.4,20.4,0,0,0,6.82,4.51,24.53,24.53,0,0,0,17.63,0,19.77,19.77,0,0,0,11.18-11.32Zm-8.22-2.6a12.43,12.43,0,0,1-2.51,4.45,10.87,10.87,0,0,1-4,2.8,14.94,14.94,0,0,1-10.6,0,10.84,10.84,0,0,1-4-2.8,12.43,12.43,0,0,1-2.51-4.45,20.74,20.74,0,0,1,0-11.89,12.56,12.56,0,0,1,2.51-4.47,10.78,10.78,0,0,1,4-2.81,14.94,14.94,0,0,1,10.6,0,10.8,10.8,0,0,1,4,2.81,12.56,12.56,0,0,1,2.51,4.47,20.74,20.74,0,0,1,0,11.89Z"/><path class="a" d="M695.33,110.36l13-42.08h-6.84a3.08,3.08,0,0,0-1.88.58,2.47,2.47,0,0,0-1,1.33l-6.52,23.72q-.23.93-.46,2t-.46,2.32q-.23-1.22-.54-2.32t-.62-2L682.48,70.2a3.26,3.26,0,0,0-1.06-1.38,3,3,0,0,0-1.84-.54H677a3,3,0,0,0-1.87.59,2.76,2.76,0,0,0-1,1.32l-7.6,23.72q-.35,1-.64,2.13t-.55,2.42q-.23-1.28-.48-2.41t-.48-2.15L657.89,70.2a2.38,2.38,0,0,0-1-1.39,3.3,3.3,0,0,0-1.9-.52h-7.31l13,42.08h7.89l8.7-27.52q.2-.58.39-1.28l.39-1.45q.17.75.36,1.45a11.49,11.49,0,0,0,.42,1.28l8.61,27.52Z"/><polygon class="a" points="747.24 103.29 730.97 103.29 730.97 68.28 722.27 68.28 722.27 110.36 747.24 110.36 747.24 103.29"/><polygon class="a" points="788.5 103.55 770.47 103.55 770.47 92.5 784.5 92.5 784.5 85.92 770.47 85.92 770.47 75.1 788.5 75.1 788.5 68.28 761.71 68.28 761.71 110.36 788.5 110.36 788.5 103.55"/><path class="a" d="M836,74.22a19.92,19.92,0,0,0-6.8-4.36,23.86,23.86,0,0,0-8.82-1.57H804.16v42.08h16.18a23.86,23.86,0,0,0,8.82-1.57,20,20,0,0,0,6.8-4.35,19.29,19.29,0,0,0,4.38-6.66,23.86,23.86,0,0,0,0-16.92A19.47,19.47,0,0,0,836,74.22Zm-3.87,21.07a12.67,12.67,0,0,1-2.49,4.48,10.66,10.66,0,0,1-4,2.81,13.67,13.67,0,0,1-5.29,1h-7.42V75.1h7.42a13.51,13.51,0,0,1,5.29,1,10.9,10.9,0,0,1,4,2.81,12.53,12.53,0,0,1,2.49,4.47,20.84,20.84,0,0,1,0,11.92Z"/><path class="a" d="M867.37,79a11.35,11.35,0,0,1,4-2.87,13.38,13.38,0,0,1,5.31-1,20.72,20.72,0,0,1,3.07.2,15,15,0,0,1,2.46.58,15.78,15.78,0,0,1,2.13.88q1,.51,2,1.15a2.76,2.76,0,0,0,2,.46A2.34,2.34,0,0,0,890,77.28l2.52-3.89a19.73,19.73,0,0,0-6.41-4,23.56,23.56,0,0,0-4.18-1.16,26.68,26.68,0,0,0-4.87-.42,24.86,24.86,0,0,0-9.12,1.59A20.21,20.21,0,0,0,861,73.85a19.42,19.42,0,0,0-4.42,6.79A23.49,23.49,0,0,0,855,89.31a22.39,22.39,0,0,0,1.62,8.61,19.77,19.77,0,0,0,4.61,6.82,21.14,21.14,0,0,0,7.19,4.48,26.1,26.1,0,0,0,9.4,1.61,26.77,26.77,0,0,0,7.7-1.09,22.55,22.55,0,0,0,6.86-3.44V88.93H877.94v4.84a1.5,1.5,0,0,0,.48,1.15,1.85,1.85,0,0,0,1.32.45h4.76v7.08a18.65,18.65,0,0,1-3.2,1.15A16.45,16.45,0,0,1,872,103a11.86,11.86,0,0,1-4.31-2.87,12.94,12.94,0,0,1-2.78-4.63,18.3,18.3,0,0,1-1-6.22,17.81,17.81,0,0,1,.9-5.83A12.83,12.83,0,0,1,867.37,79Z"/><polygon class="a" points="935.45 75.1 935.45 68.28 908.65 68.28 908.65 110.36 935.45 110.36 935.45 103.55 917.41 103.55 917.41 92.5 931.44 92.5 931.44 85.92 917.41 85.92 917.41 75.1 935.45 75.1"/><rect class="a" x="273.27" y="139.17" width="5.33" height="39.41"/><path class="a" d="M325.13,167.08q0,.63,0,1.31t.11,1.39l-22.82-29.7a2.75,2.75,0,0,0-.78-.73,2.39,2.39,0,0,0-1.06-.18h-2.75v39.41h4.67V150.5q0-.55,0-1.21t-.08-1.35l22.8,29.67a2.67,2.67,0,0,0,.84.74,2.29,2.29,0,0,0,1.06.22h2.7V139.17h-4.67Z"/><polygon class="a" points="344.11 143.65 356.9 143.65 356.9 178.57 362.23 178.57 362.23 143.65 374.96 143.65 374.96 139.16 344.11 139.16 344.11 143.65"/><polygon class="a" points="389.26 178.57 413.55 178.57 413.55 174.23 394.63 174.23 394.63 160.78 409.94 160.78 409.94 156.6 394.63 156.6 394.63 143.51 413.55 143.51 413.55 139.16 389.26 139.16 389.26 178.57"/><path class="a" d="M446.33,161.25a15.08,15.08,0,0,0,4.08-1.54,11.44,11.44,0,0,0,3.05-2.46,10.33,10.33,0,0,0,1.91-3.26,11.33,11.33,0,0,0,.66-3.91,11.53,11.53,0,0,0-.85-4.52,8.76,8.76,0,0,0-2.63-3.45,12.35,12.35,0,0,0-4.5-2.19,24.34,24.34,0,0,0-6.46-.76H430.46v39.41h5.31V162.13h4a3.67,3.67,0,0,1,1.65.29,3,3,0,0,1,1,.95l10.23,14.08a2.33,2.33,0,0,0,2.15,1.13h4.73l-11.49-15.65A5.64,5.64,0,0,0,446.33,161.25Zm-5-3h-5.58V143.37h5.83q4.59,0,6.92,1.79a6.28,6.28,0,0,1,2.32,5.31,8,8,0,0,1-.61,3.16,6.62,6.62,0,0,1-1.8,2.46,8.36,8.36,0,0,1-3,1.59A13.59,13.59,0,0,1,441.35,158.25Z"/><path class="a" d="M501.3,167.08q0,.63,0,1.31t.11,1.39l-22.82-29.7a2.75,2.75,0,0,0-.78-.73,2.39,2.39,0,0,0-1.06-.18H474v39.41h4.67V150.5q0-.55,0-1.21t-.08-1.35l22.8,29.67a2.67,2.67,0,0,0,.84.74,2.29,2.29,0,0,0,1.06.22H506V139.17H501.3Z"/><path class="a" d="M535.54,139.17l-15.76,39.41h4.13a1.75,1.75,0,0,0,1.15-.38,2.15,2.15,0,0,0,.66-.88l3.69-9.52h17.68l3.69,9.52a2.19,2.19,0,0,0,.66.91,1.77,1.77,0,0,0,1.15.36h4.13L541,139.17Zm-4.65,24.78,6.19-16q.28-.71.56-1.66t.59-2.08a29.93,29.93,0,0,0,1.18,3.71l6.19,16Z"/><polygon class="a" points="562.73 143.65 575.52 143.65 575.52 178.57 580.86 178.57 580.86 143.65 593.59 143.65 593.59 139.16 562.73 139.16 562.73 143.65"/><rect class="a" x="608.88" y="139.17" width="5.33" height="39.41"/><path class="a" d="M664.7,144.38a17.77,17.77,0,0,0-6.15-4.17,21.89,21.89,0,0,0-15.85,0,17.8,17.8,0,0,0-6.13,4.17,18.75,18.75,0,0,0-4,6.38,24.25,24.25,0,0,0,0,16.25,18.6,18.6,0,0,0,4,6.37,17.72,17.72,0,0,0,6.13,4.14,22.1,22.1,0,0,0,15.85,0,17.69,17.69,0,0,0,6.15-4.14,18.62,18.62,0,0,0,4-6.37,24.25,24.25,0,0,0,0-16.25A18.76,18.76,0,0,0,664.7,144.38Zm-1.1,21a13.81,13.81,0,0,1-2.8,4.87,12,12,0,0,1-4.4,3.05,16.19,16.19,0,0,1-11.52,0,12.14,12.14,0,0,1-4.41-3.05,13.69,13.69,0,0,1-2.82-4.87,21.9,21.9,0,0,1,0-13,13.66,13.66,0,0,1,2.82-4.88,12.29,12.29,0,0,1,4.41-3.07,16,16,0,0,1,11.52,0,12.17,12.17,0,0,1,4.4,3.07,13.78,13.78,0,0,1,2.8,4.88,21.9,21.9,0,0,1,0,13Z"/><path class="a" d="M713.32,167.08q0,.63,0,1.31t.11,1.39l-22.82-29.7a2.75,2.75,0,0,0-.78-.73,2.39,2.39,0,0,0-1.06-.18H686v39.41h4.67V150.5q0-.55,0-1.21t-.08-1.35l22.8,29.67a2.67,2.67,0,0,0,.84.74,2.29,2.29,0,0,0,1.06.22H718V139.17h-4.67Z"/><path class="a" d="M747.56,139.17,731.8,178.57h4.13a1.75,1.75,0,0,0,1.15-.38,2.15,2.15,0,0,0,.66-.88l3.69-9.52h17.68l3.69,9.52a2.19,2.19,0,0,0,.66.91,1.77,1.77,0,0,0,1.15.36h4.13L753,139.17Zm-4.65,24.78,6.19-16q.28-.71.56-1.66t.59-2.08a29.93,29.93,0,0,0,1.18,3.71l6.19,16Z"/><polygon class="a" points="787.74 139.16 782.4 139.16 782.4 178.57 804.78 178.57 804.78 174.09 787.74 174.09 787.74 139.16"/><rect class="a" x="165.76" y="30.99" width="64.66" height="7.81" transform="translate(51.6 172.72) rotate(-53.24)"/><rect class="a" x="157.97" y="35.47" width="31.15" height="7.81" transform="translate(60.94 177.17) rotate(-63.53)"/><rect class="a" x="135.66" y="20.7" width="48.97" height="7.81" transform="translate(91.88 171.55) rotate(-73.82)"/><rect class="a" x="125.36" y="25.98" width="31.14" height="7.81" transform="translate(96.69 166.99) rotate(-84.09)"/><rect class="a" x="119.82" y="10.34" width="7.81" height="34.89" transform="translate(-1.76 9.54) rotate(-4.38)"/><rect class="a" x="104.07" y="24.04" width="7.81" height="23.88" transform="translate(-5.59 28.51) rotate(-14.67)"/><rect class="a" x="90.29" y="37.1" width="7.81" height="16.01" transform="translate(-10.24 43.97) rotate(-24.96)"/><rect class="a" x="79.51" y="53.8" width="7.81" height="6.28" transform="translate(-17.57 58.53) rotate(-35.22)"/><rect class="a" x="61.29" y="46.91" width="7.81" height="25.67" transform="translate(-23.11 64.41) rotate(-45.52)"/><polygon class="a" points="67.51 76.54 39.16 57.1 34.77 63.56 63.12 83 67.51 76.54"/><rect class="a" x="45.55" y="78.52" width="7.81" height="19.52" transform="translate(-51.29 97.7) rotate(-66.08)"/><rect class="a" x="23.45" y="72.14" width="7.81" height="54.4" transform="translate(-75.63 102.53) rotate(-76.38)"/><rect class="a" x="28.05" y="98.94" width="7.81" height="39.51" transform="translate(-88.4 143.69) rotate(-86.66)"/><rect class="a" x="13.75" y="132.53" width="38.51" height="7.81" transform="translate(-16.27 5) rotate(-6.95)"/><rect class="a" x="46.35" y="145.47" width="8.95" height="7.81" transform="translate(-41.98 21.77) rotate(-17.24)"/><rect class="a" x="29.96" y="164.82" width="32.4" height="7.81" transform="translate(-72.75 40.43) rotate(-27.53)"/><rect class="a" x="36.96" y="180.05" width="34.93" height="7.81" transform="translate(-101.35 71.98) rotate(-37.81)"/><rect class="a" x="49.54" y="192.46" width="34.05" height="7.81" transform="translate(-124.04 114.75) rotate(-48.09)"/><rect class="a" x="77.38" y="195.02" width="15.72" height="7.81" transform="matrix(0.52, -0.85, 0.85, 0.52, -128.85, 167.24)"/><rect class="a" x="81.26" y="208.95" width="30.6" height="7.81" transform="translate(-136.84 225.33) rotate(-68.66)"/><rect class="a" x="99.09" y="212.46" width="28.08" height="7.81" transform="translate(-120.9 285.95) rotate(-78.96)"/><rect class="a" x="120.11" y="209.92" width="19.53" height="7.81" transform="translate(-85.68 340.82) rotate(-89.23)"/><rect class="a" x="143.45" y="202.72" width="7.81" height="37.77" transform="translate(-34.65 27.45) rotate(-9.53)"/><rect class="a" x="157.99" y="198.7" width="7.81" height="22.82" transform="translate(-61.62 67.29) rotate(-19.81)"/><polygon class="a" points="167.58 195.32 195.91 243.64 202.67 239.72 174.34 191.4 167.58 195.32"/><polygon class="a" points="189.75 186.87 185.44 182.44 179.79 187.84 184.11 192.27 189.75 186.87"/><rect class="a" x="198.44" y="170.36" width="7.81" height="25.18" transform="translate(-67.41 223.52) rotate(-50.67)"/><rect class="a" x="206.67" y="157.32" width="7.81" height="22.75" transform="translate(-39.13 270.9) rotate(-60.96)"/><rect class="a" x="207.32" y="146.69" width="7.81" height="10.15" transform="matrix(0.32, -0.95, 0.95, 0.32, -0.38, 303.01)"/><rect class="a" x="220.93" y="123.3" width="7.81" height="30.43" transform="translate(54.7 340.49) rotate(-81.53)"/><rect class="a" x="210.62" y="117.82" width="19.33" height="7.81" transform="translate(-3.72 7) rotate(-1.8)"/><rect class="a" x="208.63" y="101.41" width="24.43" height="7.81" transform="matrix(0.98, -0.21, 0.21, 0.98, -17.17, 48.65)"/><rect class="a" x="204.05" y="87.17" width="16.66" height="7.81" transform="translate(-18.68 87.75) rotate(-22.39)"/><rect class="a" x="194.26" y="64.61" width="48.45" height="7.81" transform="translate(-2.43 128.76) rotate(-32.66)"/><rect class="a" x="188.23" y="63.55" width="8.42" height="7.81" transform="translate(5.63 149.23) rotate(-42.96)"/><polygon class="a" points="161.96 86.56 158.96 84.05 156.91 86.48 159.91 88.99 160.51 88.29 161.96 86.56"/><rect class="a" x="144.39" y="84.06" width="11.88" height="3.9" transform="translate(6.36 182.29) rotate(-63.55)"/><rect class="a" x="140.41" y="78.83" width="6.86" height="3.9" transform="translate(26.2 196.45) rotate(-73.83)"/><rect class="a" x="129.66" y="79.73" width="11.81" height="3.91" transform="translate(40.4 208.14) rotate(-84.11)"/><rect class="a" x="125.85" y="75.67" width="3.91" height="10.9" transform="translate(-5.85 10.04) rotate(-4.4)"/><rect class="a" x="118.52" y="76.92" width="3.91" height="13.81" transform="translate(-17.3 33.23) rotate(-14.66)"/><rect class="a" x="111.89" y="79.37" width="3.91" height="16.07" transform="translate(-26.25 56.21) rotate(-24.96)"/><polygon class="a" points="101.25 85.65 113.16 102.67 116.35 100.42 104.44 83.39 101.25 85.65"/><rect class="a" x="98.99" y="88.2" width="3.91" height="13.43" transform="translate(-37.5 100.43) rotate(-45.52)"/><rect class="a" x="93.58" y="94.38" width="3.9" height="11.96" transform="translate(-41.17 122.97) rotate(-55.81)"/><rect class="a" x="91.41" y="100.1" width="3.91" height="15.42" transform="translate(-43.03 149.47) rotate(-66.09)"/><rect class="a" x="84.22" y="110.88" width="3.91" height="5.54" transform="translate(-44.58 170.64) rotate(-76.38)"/><rect class="a" x="85.1" y="117.1" width="3.9" height="9.76" transform="translate(-39.77 201.81) rotate(-86.68)"/><rect class="a" x="82.42" y="127.91" width="10.07" height="3.91" transform="translate(-15.06 11.52) rotate(-6.94)"/><polygon class="a" points="103.81 135.13 102.66 131.4 83.72 137.21 84.88 140.93 103.81 135.13"/><rect class="a" x="86.98" y="142.54" width="11.7" height="3.91" transform="translate(-56.31 59.33) rotate(-27.55)"/><rect class="a" x="91.22" y="149.24" width="11.08" height="3.91" transform="translate(-72.35 90.99) rotate(-37.79)"/><rect class="a" x="96.46" y="154.81" width="11.45" height="3.9" transform="translate(-82.73 128.09) rotate(-48.09)"/><rect class="a" x="101.58" y="157.5" width="16.05" height="3.91" transform="translate(-83.64 169.23) rotate(-58.39)"/><rect class="a" x="109.42" y="162.63" width="12.09" height="3.91" transform="translate(-79.84 212.28) rotate(-68.67)"/><rect class="a" x="116.37" y="164.24" width="13.19" height="3.91" transform="translate(-63.71 255.04) rotate(-78.95)"/><rect class="a" x="122.84" y="163.92" width="15.4" height="3.91" transform="translate(-37.03 294.21) rotate(-89.24)"/><rect class="a" x="136.42" y="162.88" width="3.9" height="10.09" transform="translate(-25.88 25.22) rotate(-9.53)"/><rect class="a" x="143.24" y="156.28" width="3.91" height="14.84" transform="translate(-46.94 59) rotate(-19.84)"/><rect class="a" x="152.8" y="163.53" width="3.91" height="3.69" transform="translate(-62.03 99.78) rotate(-30.07)"/><polygon class="a" points="164.34 160.64 150.39 144.29 147.41 146.82 161.37 163.17 164.34 160.64"/><rect class="a" x="161.86" y="144.65" width="3.9" height="13.45" transform="translate(-57.1 182.14) rotate(-50.67)"/><rect class="a" x="165.81" y="137.85" width="3.91" height="14.17" transform="translate(-40.4 221.2) rotate(-60.95)"/><polygon class="a" points="178.15 138.49 160.71 132.49 159.45 136.19 176.89 142.19 178.15 138.49"/><rect class="a" x="171.73" y="124.95" width="3.91" height="11.93" transform="translate(18.56 283.38) rotate(-81.51)"/><rect class="a" x="164.92" y="121.32" width="15.18" height="3.9" transform="translate(-3.78 5.47) rotate(-1.8)"/><rect class="a" x="165.37" y="113.8" width="13.83" height="3.91" transform="translate(-20.44 38.69) rotate(-12.1)"/><rect class="a" x="161.22" y="106.97" width="15.82" height="3.9" transform="translate(-28.72 72.54) rotate(-22.36)"/><rect class="a" x="166.05" y="98.02" width="6.88" height="3.91" transform="translate(-27.16 107.25) rotate(-32.65)"/><rect class="a" x="150.92" y="95.54" width="18.56" height="3.91" transform="translate(-23.52 135.1) rotate(-42.89)"/></svg>
+
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="component text">
+        <div class="contents">
+          <nav>
+            <a class="toggle-contents">
+              <span>Toggle contents</span>
+            </a>
+            <h2>Table of contents</h2>
+            <ul>
+              <li>
+                <a href="#the-principles-of-open-licensing">The principles of open licensing</a>
+              </li>
+              <li>
+                <a href="#licence-proliferation-and-why-it-is-a-problem">Licence proliferation and why it is a problem</a>
+              </li>
+              <li>
+                <a href="#the-licensing-process">The licensing process</a>
+              </li>
+              <li>
+                <a href="#acknowledgements">Acknowledgements</a>
+              </li>
+              <li>
+                <a href="#further-reading">Further reading</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="copy">
+          <h2>Summary</h2>
+          <p>
+            The proliferation of new licences continues to be a major challenge for open data. When licensors decide to create custom licences instead of using standard open ones, it creates a number of problems. Understanding the legal arrangements of new licences may be cumbersome for data data users. Because of legal uncertainties and compatibility issues with many different licenses, this proliferation can have chilling effects on the reuse of data. Standardised licences can smoothen this process by clearly stating usage rights.
+          </p>
+          <p>
+            This report provides a snapshot of licence proliferation in government. It explains why new licence terms complicate the licensing ecosystem and fail to resolve deeper issues around copyright and existing licence incompatibilities. The report makes a case for the use of public domain dedication and existing reusable standard licences and argues that a core issue of licensing is a lack of centralised coordination within government.
+          </p>
+          <p>
+            To understand how governments can centralise and harmonise decision-making around open licences, the report discusses different phases of the licensing process including copyright and copyright reform, policy development, and the design of individual licences. It offers an introduction on how licences are governed and outlines some persisting challenges and best practices.
+          </p>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h3>Recommendations</h3>
+          <p>
+            We make the following recommendations for government agencies who wish to make their public sector information as reusable as possible.
+          </p>
+          <p>
+            When determining the legal context:
+          </p>
+          <ol>
+            <li>
+              Clarify if data falls under the scope of copyright, database rights, or similar rights.
+            </li>
+            <li>
+              Consider copyright reform if the protection status of public sector information is not clear. This may include granting positive use rights for public sector information within copyright law instead of adding many exceptions to copyright.
+            </li>
+            <li>
+              If data is exempt from copyright and database rights, publish clear notices that inform users about their rights to freely reuse, combine and distribute information.
+            </li>
+          </ol>
+          <p>
+            When designing policy and governance mechanisms:
+          </p>
+          <ol>
+            <li>
+              Consider setting up inter-ministerial committees and similar steering bodies to align policies. Collaborate closely with representative bodies for lower administrative levels to align policy.
+            </li>
+            <li>
+              Recommend reusable standard open licences in your policy tools and avoid vague language about how to implement them. Clearly name a small number of highly compatible solutions. Recommended solutions are the public domain dedication Creative Commons Zero and the Creative Commons Attribution 4.0 licence.
+            </li>
+            <li>
+              Consider to combine compliance policies with the appointment of an agency overseeing and reviewing licensing decisions. These reviews should be designed that they can influence the uptake of a standard set of licences.
+            </li>
+          </ol>
+          <p>
+            When choosing an open licence we make following recommendations:
+          </p>
+          <ol>
+            <li>
+              If information is in the public domain, use legally non-binding notices. These notices must be clear and should concisely inform users about their rights to use information.
+            </li>
+            <li>
+              For information not otherwise in the public domain, use CC0 for public domain dedication or standardized open licences, preferably CC BY 4.0. They can be reused by anyone, which helps ensure compatibility with other datasets.
+            </li>
+            <li>
+              In cases where governments prefer to use a customized open government licence, these licenses should provide the least restrictions possible, and allow users to combine the data or works with other openly licensed artifacts.
+            </li>
+            <li>
+           </ol>
+          <p>
+            Once you have chosen an open licence, we recommend to take following actions:
+          </p>
+          <ol>
+            <li>
+              To guarantee a licence meets the Open Definition, we strongly recommend to submit the licence for <a href="http://opendefinition.org/licenses/process/">approval under the Open Definition</a>.
+            </li>
+            <li>
+              Carefully verify if small ‘micro-elements’ in your provisions, such as parties involved, rights granted, or conditions, cause incompatibilities with other licences.
+            </li>
+            <li>
+              Add compatibility statements to give legal certainty to users. These statements must explicitly name the licences and licence versions compatible with a custom licence.
+            </li>
+            <li>
+              Use notices to provide additional explanations and comments outside of the core licence text. This keeps the licence as simple and interoperable as possible.
+            </li>
+            <li>
+              Attach the licence clearly to the information to which it applies. Maintain stable links to licences so that users can access licence terms at all times.
+            </li>
+            <li>
+              Highlight the licence version and provide information how data can be used.
+            </li>
+            <li>
+              When publishing data, avoid any confusing or contradictory elements such as copyright notices in website footers. Clearly separate a website’s terms and conditions from the terms of open licences.
+            </li>
+          </ol>
+        </div>
+        <div class="footnotes">
+        </div>
+      </div>
+    </section>
+    <section id="the-principles-of-open-licensing">
+      <div class="component text">
+        <div class="copy">
+          <h2>The principles of open licensing</h2>
+          <p>
+            People invest time and effort in creating works. Intellectual property rights, including copyright or similar rights regulate who can use and exploit the works. The default legal status may restrict uses we want to promote and allow. Without clear licensing, the legal grounds for permitting those uses  can be unclear.
+          </p>
+          <p>
+            Open licences are legal arrangements that grant the general public rights to reuse, distribute, combine or modify works that would otherwise be restricted under intellectual property laws. <strong>Licences are open, if they enable anyone to use works for any purpose</strong>, both commercially and non-commercially.
+          </p>
+          <p>
+            Without an open licence, users face legal grey areas. “May I publish environmental statistics in a health app? Am I allowed to combine a city map with location information of companies?” Open licences help answer these and similar questions.
+          </p>
+          <p>
+            Open licenses may be unnecessary for works not restricted by copyright or similar laws. Such works are considered to be in the ‘public domain’<sup><a href="#fn-item1" id="fn-return1">1</a></sup>. Which rights are recognized for public domain works varies by country. But generally they cover all rights that open licenses would also permit.
+          </p>
+          <p>
+            The <a href="http://opendefinition.org/od/2.1/en/">Open Definition</a> defines how IP-protected works can be made available openly. This provides the framework for publishers to turn their data into open data, and can be similarly applied to other types of information, such as official government documents, journalism, art, and so on. Central to the Open Definition are nine <a href="http://opendefinition.org/od/2.1/en/">requirements to legal openness</a>. According to these requirements, open licences must allow anyone to use data for any purpose. Restrictions may only regard provenance, such as attribution of contributors, rights holders, sponsors, and creators, and possibly restrictions that adapted artifacts must use license terms similar to the works they originate from. Publishers must comply with these requirements in order to open up their information. Open licences only address barriers posed by copyright but naturally do not supersede civic law or allow for unlawful behaviour.
+          </p>
+
+          <h3>Understanding different types of open licences</h3>
+          <p>
+            Open licences are described as either permissive or copyleft. If a work is licensed under a ‘copyleft’ licence, its terms and conditions must apply to works that will derive from and build on the original work. If a work is licensed under a permissive licence, the terms and conditions of a derivative work can be changed.
+          </p>
+          <p>
+            Open licences can refer to any copyrighted work, including content and/or databases. Depending on a country’s copyright law, content may include video, audio, written texts, and other works that are considered products of creative authorship. In the European Union and some other countries, other protections on databases exist, so-called ‘<strong>database rights</strong>’<sup><a href="#fn-item2" id="fn-return2">2</a></sup>. Database rights do not stem from copyright, but intend to protect investments made to build a database (sometimes referred to as ‘sweat of the brow’). The European Database Directive<sup><a href="#fn-item3" id="fn-return3">3</a></sup> is possibly the most prominent example for database rights. 
+          </p>
+          <p>
+            In the United States, databases are considered compiled work, similar to books or other works.<sup><a href="#fn-item4" id="fn-return4">4</a></sup> Here the sweat of the brow principle does not apply. Either the database records or the database structure need to be results of creative authorship to be protected. An alphabetical list of factual data is usually not considered to be protected.<sup><a href="#fn-item5" id="fn-return5">5</a></sup> While legally different, database rights and copyright have similar effects. They represent restrictions on the public use of information.
+          </p>
+          <p>
+            Several widely known licences address database rights. The Open Data Commons licences (<a href="http://opendefinition.org/licenses/odc-odbl/">Open Database Licence 1.0</a>, (ODbL) <a href="http://opendefinition.org/licenses/odc-by/">Open Data Commons Attribution Licence 1.0</a> (ODC-BY) were the first to address database rights. The <a href="http://opendefinition.org/licenses/cc-zero/">Creative Commons Zero</a> public domain dedication (CC0), as well as version 4.0 of the <a href="http://opendefinition.org/licenses/cc-by/">Creative Commons Attribution</a> (CC-BY), and <a href="http://opendefinition.org/licenses/cc-by-sa/">Creative Commons Attribution Share-Alike</a> (CC-BY-SA) licences cover database rights as well as regular copyright. Beyond these re-usable standard licences, governments develop their own licences to cover database rights such as the Open Government Licence (OGL 3.0) or the Norwegian Licence for Open Government Data (NLOD). Recently, the Linux Foundation published their ‘Community Data License Agreement’ to address database rights.
+          </p>
+          <h3>Open licences and the threat of use silos</h3>
+          <p>
+            Even if all licences are open, they may prevent users from mixing data under multiple licenses because of incompatibility among each other. Licences are compatible if people can combine works and distribute them under one of these licences, or a third compatible licence. Licences must be at least be ‘one-way compatible’. This means that it must be possible to provide a combined work at least under the terms of the more restrive licence. The simplified graphic below shows an example of one-way compatibility, using databases licensed under CC BY and CC BY-SA.
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item1">
+              Public domain is used in various legal systems, but in some countries it can be named differently. In general it means, that no copyright, database right, or any other restricting rights are applicable to this type of content or work. <a href="#fn-return1">↩</a>
+            </li>
+            <li id="fn-item2">
+              Open Data Handbook, Copyright: <a href="http://bit.ly/2AJ3z7V">http://bit.ly/2AJ3z7V</a> <a href="#fn-return2">↩</a>
+            </li>
+            <li id="fn-item3">
+              See the full legal text here: <a href="http://bit.ly/1nHYqmK">http://bit.ly/1nHYqmK</a> <a href="#fn-return3">↩</a>
+            </li>
+            <li id="fn-item4">
+              U.S. Copyright Office (1997): Report on legal protection for databases. <a href="http://bit.ly/2kuGtff">http://bit.ly/2kuGtff</a> <a href="#fn-return4">↩</a>
+            </li>
+            <li id="fn-item5">
+              The Feist v. Rural case is a landmark ruling emphasising that databases need to be works of creative authorship. Protection status is not entirely clear cut, and companies have developed strategies to add creative works to either each data record, or the database structure itself. See U.S. Copyright Office (1997): Report on legal protection for databases. <a href="http://bit.ly/2kuGtff">http://bit.ly/2kuGtff</a> <a href="#fn-return5">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component figure">
+        <figure class="small image">
+          <img src="graphic-1.svg" alt="" />
+          <figcaption>
+            Graphic 1: Schema of one-way compatibility
+          </figcaption>
+        </figure>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <p>
+            Governments need to be very careful not to create data use silos. We speak of silos whenever a data system is not compatible or integrated with another data system. Use silos arise legally if it is not possible to combine data from different sources, due to incompatible licensing. This problem becomes even more important as governments turn towards supporting the free flow of public sector information such as with Europe’s Digital Single Market strategy.<sup><a href="#fn-item6" id="fn-return6">6</a></sup> Licence compatibility and maximum simplicity of licences are paramount for creating effective data markets, economic growth through data, cross-border data sharing, and reuse of government data by civil society.
+          </p>
+          <p>
+            <strong>Open Knowledge International strongly discourages governments from creating new licences to avoid complicating the licence ecosystem further</strong>. Fundamental differences and incompatibilities exist both between permissive and copyleft licences, and between different copyleft licences. For example, OpenStreetMap contributors often deal with and discuss incompatibility between CC BY-SA and the ODbL.<sup><a href="#fn-item7" id="fn-return7">7</a></sup> 
+          </p>
+          <p>
+            New licenses do not address fundamental incompatibility problems across already existing, and widely used open licences. Instead they are likely to complicate the licensing ecosystem because they usually do not replace existing open licences. Furthermore new licences cannot address the problem of international incompatibility of open licences. Open licences operate within specific environments of intellectual property protection. Depending on varying laws, open licences can have differing degrees of applicability across countries.
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item6">
+              The European Commission describes in its communication ‘Building a European data economy’ how a Digital Single Market strategy to support the free flow of data. In order to enhance access and use of public sector information (PSI) the European Commission also launched a <a href="https://ec.europa.eu/info/consultations/public-consultation-review-directive-re-use-public-sector-information-psi-directive_en">public consultation</a>, to complement the review of the <a href="https://ec.europa.eu/digital-single-market/en/legislative-measures">Directive on the reuse of Public Sector Information</a> (2003/98/EC). See more information here: <a href="http://bit.ly/2hjwQuB">http://bit.ly/2hjwQuB</a>  <a href="#fn-return6">↩</a>
+            </li>
+            <li id="fn-item7">
+              See OpenStreetMap community blog entry: <a href="http://bit.ly/2kwK1O0">http://bit.ly/2kwK1O0</a> <a href="#fn-return7">↩</a>
+            </li>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="licence-proliferation-and-why-it-is-a-problem">
+      <div class="component text">
+        <div class="copy">
+          <h2>Licence proliferation and why it is a problem</h2>
+          <p>
+            Licence proliferation occurs every time a new open licence is created. First acknowledged by the open source software movement<sup><a href="#fn-item8" id="fn-return8">8</a></sup>, licence proliferation presents a major problem for the reuse of data. The following five issues of licence proliferation are especially problematic for open government data:
+          </p>
+          <ol>
+            <li>
+              New terms and conditions can <strong>cause incompatibility</strong> with existing licences. This can entirely prevent from using data or create use silos.
+            </li>
+            <li>
+              New licences are not always reader-friendly and can <strong>cause legal uncertainty</strong> by including vague language.
+            </li>
+            <li>
+              More licences <strong>increase the complexity of conditions</strong> set out for databases or other works because they require users to comply with all of them.
+            </li>
+            <li>
+              Every new licence <strong>requires time</strong> for users to read and understand.
+            </li>
+            <li>
+              Writing an entirely new licence is time consuming and <strong>costs money</strong>. Standard licences on the other hand can be readily used.
+            </li>
+          </ol>
+          <p>
+            To address licence proliferation it is important to understand the difference between reusable standard licences and custom licences. As explained in the following section, we strongly encourage governments to use standard legal solutions that are reusable, in particular CC0 and CC-BY 4.0.
+          </p>
+
+          <h3>Standard licences</h3>
+          <p>
+            Reusable standard licences lay out terms that can apply to any licensor and licensee. They are not the result of individual negotiations between a rightsholder and licensee. If rights holders publish their works under the same reusable standard terms, they allow users to combine, modify, and distribute these works together. This helps, for example, to add value by combining different databases.
+          </p>
+          <p>
+            Creative Commons and Open Data Commons<sup><a href="#fn-item9" id="fn-return9">9</a></sup> have developed standard licences that are publicly available and may be reused by any licensor without any modifications. As a non-profit supporting others to legally share their works, Creative Commons developed several types of copyright licences with the goal to simplify and standardise the licence ecosystem. Open Data Commons is an initiative co-initiated by Open Knowledge International focusing on developing and maintaining legal tools to open data.
+          </p>
+          <p>
+            Creative Commons and Open Data Commons both store their licences at a permanent URI and have a community that helps updating them. <a href="http://opendefinition.org/licenses/">The Open Definition endorses four reusable standard licences</a>, namely CC-BY, CC-BY-SA, ODbL, ODC-BY, as well as the tools for public domain dedication <a href="https://opendatacommons.org/licenses/pddl/1-0/">Open Data Commons Public Domain Dedication Licence</a> (PDDL) and <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">Creative Commons Zero</a> (CC0). It should be noted that CC0 and CC BY 4.0 are possibly the most commonly used legal tools<sup><a href="#fn-item10" id="fn-return10">10</a></sup> and are best suited for public sector information.
+          </p>
+
+          <h3>Custom licences</h3>
+          <p>
+            Custom licences (also referred to as ‘bespoke’ licences) are specifically tailored to individual public sector bodies and their relevant copyright. Tailoring licences to certain government bodies can cause a situation where other public sector bodies cannot reuse this licence but need to adopt a different licence.<sup><a href="#fn-item11" id="fn-return11">11</a></sup> Findings from the most recent <a href="https://index.okfn.org/">Global Open Data Index</a> show that governments continue to create custom licences. In a sample of twenty countries, we analysed <a href="https://index.okfn.org/download/">data available from the Global Open Data Index</a> and documented the terms of more than 50 unique licence texts.<sup><a href="#fn-item12" id="fn-return12">12</a></sup>
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item8">
+              The Open Source Initiative was the first organisation to publish a <a href="https://opensource.org/proliferation-report">Report on Licence Proliferation</a> outlining issues of licence proliferation. <a href="#fn-return8">↩</a>
+            </li>
+            <li id="fn-item9">
+              Open Data Commons website: <a href="http://bit.ly/2j9MopI">http://bit.ly/2j9MopI</a>  <a href="#fn-return9">↩</a>
+            </li>
+            <li id="fn-item10">
+              A list of governments using Creative Commons Licences: <a href="http://bit.ly/2AFypfy">http://bit.ly/2AFypfy</a> <a href="#fn-return10">↩</a>
+            </li>
+            <li id="fn-item11">
+              A good example is the United Kingdom’s Crown Copyright. It applies to many government bodies in the United Kingdom but not to all public sector bodies. The Open Government Licence (OGL) 2.0 and 3.0 intends to mitigate this problem. For example, OGL 2.0 covers all public sector information, including but not limited to Crown Copyright. More background is provided by the National Archive at: <a href="http://bit.ly/2uyB85T">http://bit.ly/2uyB85T</a> <a href="#fn-return11">↩</a>
+            </li>
+            <li id="fn-item12">
+              This exercise has some caveats. The Global Open Data Index has certain selection criteria what datasets to assess. It may be that governments publish similar data in different websites under different licences. <a href="#fn-return12">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component figure">
+        <figure class="large image">
+          <img src="graphic-2.png" alt="" />
+          <figcaption>
+            Graphic 2: Open licence matrix for twenty sample countries
+          </figcaption>
+        </figure>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <p>
+            We extracted the <em>names of open licences</em> and grouped them under categories for the most common licences. This enabled us to find license clusters, showing that the majority of governments uses national open data licences.<sup><a href="#fn-item13" id="fn-return13">13</a></sup>
+          </p>
+
+          <h3>Recommended licensing choices</h3>
+          <p>
+            In order to address licence proliferation, <strong>Open Knowledge International strongly recommends the following actions</strong>.
+          </p>
+          <ol>
+            <li>
+              <strong>Check if data is in the public domain:</strong> Verify if public sector information is in the public domain or protected by copyright and similar rights. If data is not protected, use a notice instead of a licence to give users legal certainty on how data can be used. Recommended solutions are Creative Commons’ Public Domain Mark or a simple ad hoc mark clearly stating the rights of users.
+            </li>
+            <li>
+              <strong>Support copyright reform to put data in the public domain:</strong> If the protection status of government information is uncertain, copyright reform may be needed to give government legal confidence. This can include granting positive use rights by copyright law, or exemptions from copyright (the latter approach is discouraged for a variety of reasons<sup><a href="#fn-item14" id="fn-return14">14</a></sup>).
+            </li>
+            <li>
+              <strong>Dedicate data to the public domain:</strong> If copyright reform is not a viable option, use reusable standard solution for public domain dedication. To ensure simplicity and compatibility, it is recommended to use CC0.
+            </li>
+            <li>
+              <strong>Pose the least restrictions possible, at most requiring attribution and ShareAlike:</strong> If attribution is actively sought, apply a permissive standard licence such as Creative Commons Attribution 4.0. A softer approach is preferable which makes reuse easier, for example to request voluntary, norms-based, and not legally binding attribution statements. CC0 (+BY) is such an approach, using a public domain dedication licence, stating that attribution is expected, but not legally required.<sup><a href="#fn-item15" id="fn-return15">15</a></sup> ShareAlike licences should be used very carefully, as they support use silos.
+            </li>
+          </ol>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item13">
+              These licences include Taiwan (OGDL-TW), Great Britain (OGL), France (LO), Canada (OGL) and Norway (NLOD). <a href="#fn-return13">↩</a>
+            </li>
+            <li id="fn-item14">
+              For more details, see the LAPSI 2.0 Licence interoperability report, available at: <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a> <a href="#fn-return14">↩</a>
+            </li>
+            <li id="fn-item15">
+              Several communities developed an approach combining public domain dedication with community guidelines, see also: <a href="http://bit.ly/2j8CJzF">http://bit.ly/2j8CJzF</a> or <a href="http://bit.ly/2iDLfmb">http://bit.ly/2iDLfmb</a> <a href="#fn-return15">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="the-licensing-process">
+      <div class="component text">
+        <div class="copy">
+          <h2>The licensing process</h2>
+          <p>
+            The licensing process within government includes rights clearance, policy development, and the application of licences.<sup><a href="#fn-item16" id="fn-return16">16</a></sup> A key issue for open licensing is <strong>a lack of central coordination to harmonise licensing choices</strong> The table below shows different elements of the licensing process and aspects of lacking central coordination. In the following sections we discuss these further and present some ways to harmonise licenses.
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item16">
+              See also: LAPSI Licensing Guidelines, available at: <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a> <a href="#fn-return16">↩</a>
+            </li>
+            <li id="fn-item17">
+              See also: LAPSI License Interoperability Report, available at: <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a> <a href="#fn-return17">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component figure">
+        <table>
+          <thead>
+            <tr>
+              <th>Legal context</th>
+              <th>Policy tools</th>
+              <th>Governance mechanisms</td>
+              <th>Individual licensing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p>
+                  Legal context defines what works fall under copyright or similar protections
+                </p>
+                <p>
+                  Protection of works may be ambivalent
+                </p>
+                <p>
+                  Clarification of intellectual property rights, as well as cultural heritage rights, personal data, confidential data and third-party-rights.
+                </p>
+              </td>
+              <td>
+                <p>
+                  Policy tools outline commitments, rules and responsibilities to open up data.
+                </p>
+                <p>
+                  Tools range from law, policies and decrees to executive orders
+                </p>
+                <p>
+                  Legal power of tools varies depending on provisions and to whom a tool legally applies.
+                </p>
+              </td>
+              <td>
+                <p>
+                  Governance mechanisms are used to supervise and support the adoption of open licences.
+                </p>
+                <p>
+                  May include the appointment of a task force, a committee, or an agency to support governments with the adoption of open licences.
+                </p>
+                <p>
+                  Support can include reviews as to why agencies apply specific open licences.  Education and training programs are also applied.
+                </p>
+              </td>
+              <td>
+                <p>
+                  The moment where data is published online under an open licence.
+                </p>
+                <p>
+                  Happens on multiple government levels (federal, state, regions, municipalities)
+                </p>
+                <p>
+                  Depending on the design of policy tools and governance mechanisms (see left), governments are free to choose where to upload data and under what conditions.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <h3>Legal context: Copyright and similar rights</h3>
+          <p>
+            Open licensing starts with the interpretation of copyright law and similar protections. Copyright law can apply differently depending on the administrative level of government and the type of public sector body. For example, in the United States federal government data is by default in the public domain<sup><a href="#fn-item18" id="fn-return18">18</a></sup>, whilst state-level government data is protected by copyright.<sup><a href="#fn-item19" id="fn-return19">19</a></sup> Copyright may also apply differently depending on the type of public sector body. For example, in the United Kingdom, Crown Copyright applies to government agencies which have ‘Crown status’. Other public sector bodies that do not fall under Crown Copyright would possibly not be able to apply the same custom open licences that government bodies use. The Open Government Licence 2.0 and 3.0 address this issue by being applicable to rights beyond Crown Copyright.
+          </p>
+          <p>
+            <strong>Legal certainty:</strong> Jurisdictions can apply and clarify protections very differently. Sometimes law clarifies if public sector information is protected, in other cases an intellectual property office may be able to give answers. In other jurisdictions, however, the protection status of government information is unclear. A high degree of legal uncertainty prevents government and public sector bodies from putting their data in the open.<sup><a href="#fn-item20" id="fn-return20">20</a></sup> Copyright reform can be the strongest mechanism to give legal certainty and to make government data legally ‘open by default’. For instance, central government may define that databases are exempt from copyright and similar rights. Copyright reform, at best across countries, can help to overcome the complexity of differing copyright exceptions and limitations.<sup><a href="#fn-item21" id="fn-return21">21</a></sup>
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item18">
+              <a href="http://bit.ly/2BbY7vf">http://bit.ly/2BbY7vf</a> <a href="#fn-return18">↩</a>
+            </li>
+            <li id="fn-item19">
+              <a href="http://bit.ly/1XyJWWd">http://bit.ly/1XyJWWd</a> <a href="#fn-return19">↩</a>
+            </li>
+            <li id="fn-item20">
+               See LAPSI licensing guidelines: <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a> <a href="#fn-return20">↩</a>
+            </li>
+            <li id="fn-item21">
+              In Europe copyright can be further harmonised for example via a reviewed Directive on the Re-Use of Public Sector Information (in the case of Europe). <a href="#fn-return21">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h4>Recommendations to clarify legal contexts</h4>
+          <ul>
+            <li>
+              Clarify if data falls under the scope of copyright, database rights, or similar rights.
+            </li>
+            <li>
+              Consider copyright reform if the protection status of public sector information is not clear. Grant positive use rights for public sector information within copyright law instead of adding many exceptions to copyright.
+            </li>
+            <li>
+              If data is exempt from copyright and database rights, publish clear notices that inform users about their rights to freely reuse, combine and distribute information.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <h3>Policy and governance mechanisms</h3>
+          <p>
+            Governments can develop different policy tools to mandate licensing, ranging from laws to decrees, executive orders, and policies. Through policy development governments can execute different degrees of control over the licences that get implemented. But not all policy tools ensure a consistent uptake of open licences.
+          </p>
+          <p>
+            This can partly be explained by vague terminology used in licence texts. We found provisions requiring to make data re-usable by applying a ‘widely used licence’. Such vague language makes licences a discretionary choice of individual government bodies. Clear language should be used, requiring the use of a specific licence, possibly also covering its updated licence versions. Alternatively, policies can mandate a location to store data such as data.gov repositories. This can be complemented with another policy clearly defining the terms of this repository.  Licence standards and licensing frameworks may also help to support a harmonised uptake of open licences (see box below).
+          </p>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h4>Licensing frameworks: How educational frameworks can help to adopt more consistent open licensing</h4>
+          <p>
+            Licensing frameworks are a noteworthy approach to harmonising the use of open licences.<sup><a href="#fn-item22" id="fn-return22">22</a></sup> These frameworks offer legal guidance material for government agencies as well as information material to support government agencies making better informed decisions about how to license data. Examples include New Zealand and Australia. The mission of New Zealand’s Government Open Access and Licensing Framework (NZGOAL) is
+          </p>
+          <blockquote>
+            “to give guidance for agencies to follow when releasing copyright works and non-copyright material for re-use by others. It aims to standardise the licensing of government copyright works for reuse using Creative Commons licences and recommends statements for non-copyright material.”
+          </blockquote>
+          <p>
+            NZGOAL does so 1) by setting out principles for open licensing and open access, 2) by actively promoting the use of standard (Creative Commons) licences and “no known rights” statements wherever copyright is unclear, and 3) by providing a review process how to license works including <a href="https://www.ict.govt.nz/guidance-and-resources/open-government/new-zealand-government-open-access-and-licensing-nzgoal-framework/nzgoal-online-training-videos/">online training material</a>. NZGOAL also clearly explains why New Zealand specifically endorses the Creative Commons Attribution 4.0 licence thereby adding further clarification.
+          </p>
+          <p>
+            NZGOAL was born out of the problem that different agencies in New Zealand interpreted Crown Copyright differently. Additional legal guidance was needed to understand which copyrights these agencies hold, and how they can open up information. By using a licensing framework that promotes standard open licences and standard licensing statements, the framework shall harmonise the use of common licences and reduce ambiguities within agencies.
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item18">
+              <a href="http://bit.ly/2BbY7vf">http://bit.ly/2BbY7vf</a> <a href="#fn-return18">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <p>
+            Enforceability of policy tools may differ, too. For example, executive orders may be developed and implemented faster, but will only affect bodies associated with the issuing agency (such as a ministerial order). It is recommended to align policies and open licences across government branches and bodies. For example, an inter-ministerial committee can be appointed, to support a more coordinated policy development. In addition central authorities may be appointed to review licensing decisions of other government bodies. This supervision process can steer licensing choices. Yet, it does not entirely resolve the risk of developing and using incompatible licences.
+          </p>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h4>Recommendations for developing policy tools</h4>
+          <ul>
+            <li>
+              Consider setting up inter-ministerial committees and similar steering bodies to align policies. Collaborate closely with representative bodies for lower administrative levels to align policy.
+            </li>
+            <li>
+              Recommend reusable standard open licences in your policy tools and avoid vague language about how to implement them. Clearly name a small number of highly compatible solutions. Recommended solutions are the public domain dedication Creative Commons Zero and the Creative Commons Attribution 4.0 licence.
+            </li>
+            <li>
+              Consider to combine compliance policies with the appointment of an agency overseeing and reviewing licensing decisions. These reviews should be designed so that they can influence the uptake of a standard set of licences.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <h3>Individual licensing</h3>
+          <p>
+            Ultimately, every licensor makes decisions what open licences to apply, as well as where to publish them and in what form. If governments see themselves in the need to create custom open licences, they should ensure compatibility with existing open licences. Their licences should be reader-friendly, and provide legal certainty. Creating a custom licence needs a careful balance across these three aspects. If a licence is reader-friendly and understandable, but conflicting with standard open licences, governments significantly hamper the usability of data. Likewise, if a licence is compatible with standard open licences but contains vague language it may divert users.
+          </p>
+          <p>
+            Based on interviews and a close-reading of licence texts, we identified a list of arguments brought forward by government to create a custom licence. Not all of these customisations are legally required to address copyright issues. Here we explain how these arguments can be addressed without harming compatibility with standard licences.
+          </p>
+          <p>
+            <strong>Branding and attribution:</strong> Custom licences can be intended to give confidence to government agencies if they carry the name of a country or are called ‘government’ licences. Yet, creating custom licences only for branding reasons is unnecessary because standard open licences allow governments to add their custom attribution clauses.
+          </p>
+          <p>
+            <strong>Ensuring clarity of a licence text:</strong> The Norwegian Licence for Open Government Data (NLOD) contains clarifying comments. Since these comments are part of the licence text, they can be interpreted as legally binding. This can cause compatibility issues with the terms of existing open licences. Clarifying comments should instead be added as notices, outside of a licence text, ideally stored at a permanent address.
+          </p>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h4>What’s the difference between licences and notices?</h4>
+          <h6>Licences</h6>
+          <p>
+            A text of legal validity, issued by a rightsholder to grant others specific rights that would otherwise violate the rights of the rightsholder. Terms and conditions, or terms of use, are sometimes deemed to be equivalent to licences. Some governments include individual licences in broader terms and conditions, for example adding an open data licence into a website’s broader terms and conditions
+          </p>
+          <h6>Notices</h6>
+          <p>
+            A notice is a document that clarifies applicable rules. In contrast to a licence, it does not grant rights or permissions to data users. Notices have the purpose to inform about legal context. This makes them especially helpful when governments want to add explaining comments to their licence terms. Notices are also the best way to clarify the absence of protections on data (public domain). There are some readily available standard solutions, such as the Creative Commons Public Domain Mark.
+          </p>
+        </div>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <p>
+            <strong>Use restrictions to prevent illegal use of data:</strong> Governments may add restrictions how data can be used, sometimes written in an overly broad and vague manner. An example is a licence that was in use until recently<sup><a href="#fn-item23" id="fn-return23">23</a></sup> by the New Zealand Companies Office. The licence states that
+          </p>
+          <figure class="blockquote">
+          	<blockquote>
+          		<p>“You must reproduce the material accurately, using the most recent version. You must not use the material in a manner that is offensive, deceptive or misleading.” </p>
+          	</blockquote>
+          </figure>
+          <p>
+            These terms raise several questions. What does accurate mean? When is the use of data deceptive or misleading? Another lengthy example of a Belgian licence states that:
+          </p>
+          <figure class="blockquote">
+          	<blockquote>
+          		<p>“You may only use the services if you can guarantee that you will not be using them for illegal purposes or those prohibited by these conditions for use. You must not use the services in a way likely to damage, hamper, overload or impede the operations of a server run by FPS P&amp;O or its partners or by a network connected to this, or in a way likely to disrupt the use and enjoyment of the services by another person.”</p>
+          	</blockquote>
+          </figure>
+          <p>
+            There are multiple arguments against using these kinds of restrictive clauses. Firstly, open licences are not meant to include references to civil law (direct ones or indirect ones as in the example above). An open licence must only clarify use rights of data, based on intellectual property rights. They never supersede civil law. Secondly, restrictions can conflict with the <a href="http://opendefinition.org/od/2.1/en/">nine principles of openness outlined by the Open Definition</a>, increase legal uncertainty, and make licences incompatible.
+          </p>
+
+          <h3>Testing and clarifying licence compatibility</h3>
+          <p>
+            How can governments ensure and communicate compatibility between custom licences and standard open licences? First and foremost <strong>licence compatibility requires governments to ensure that their licence terms align with standard open licences</strong>. Even if governments create custom attribution licences, they can contain provisions that hinder the licensing of derivative works.
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item23">
+              Companies Office New Zealand changed the licence and applies a standard licence, the Creative Commons Attribution 4.0 licence now. See here: <a href="http://bit.ly/2jaWDKr">http://bit.ly/2jaWDKr</a> <a href="#fn-return23">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h4>How governments can verify compatibility with other licences</h4>
+          <p>
+            The LAPSI Licensing Interoperability report<sup><a href="#fn-item24" id="fn-return24">24</a></sup> discusses “micro-elements” in licences, and how critical they are in order to ensure compatibility across licences. These include, among others, the parties of a licence, licence issuers, licence application, the rights granted, conditions, as well as disclaimers. The report discusses each of these elements and how governments may ensure that every one of these is compatible with reusable standard licences such as CC BY 4.0 or the public domain dedication CC0.
+          </p>
+        </div>
+      </div>
+      <div class="component text">
+        <div class="copy">
+          <p>
+            <strong>Compatibility clauses:</strong> Governments sometimes add compatibility clauses for custom licences. Some licences meticulously list different licences and licence versions, while others only include vague compatibility statements. For example the French Licence Ouverte includes a compatibility statement saying that:
+          </p>
+          <figure class="blockquote">
+          	<blockquote>
+          		<p>“To facilitate the re-use of the "Information", this licence has been designed to be compatible with each licence that requires at least the authorship mention. For instance, it is compatible with the following licences: - "Open Government Licence (OGL)" of the United Kingdom - "Creative Commons Attribution 2.0" (CC-BY 2.0) of Creative Commons - "Open Data Commons Attribution" (ODC-BY) of the Open Knowledge Foundation”</p>
+          	</blockquote>
+          </figure>
+          <p>
+            Taiwan’s Open Government Data License Taiwan 1.0 (OGDL-TW 1.0)<sup><a href="#fn-item25" id="fn-return25">25</a></sup> provides excellent compatibility by using a ‘one-way transition clause’. This clause ensures that users are able to combine works licensed under OGDL-TW 1.0 with a CC-BY 4.0 licence and automatically comply with the terms of OGDL-TW 1.0. The licence text states:
+          </p>
+          <figure class="blockquote">
+          	<blockquote>
+          		<p>“The License is compatible with the Creative Commons Attribution License 4.0 International. This means that when the Open Data is provided under the License, User automatically satisfies the conditions of this License when he/she makes use of the Open Data in compliance with the Creative Commons Attribution License 4.0 International thereafter.”</p>
+          	</blockquote>
+          </figure>
+          <p>
+            Other licences leave more room for interpretation about what licences they are compatible with. Precision is necessary as to what licences are exactly compatible with a custom licence. Governments might state compatibility with multiple licences which are not compatible among each other.<sup><a href="#fn-item26" id="fn-return26">26</a></sup>
+          </p>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item24">
+              <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a> <a href="#fn-return24">↩</a>
+            </li>
+            <li id="fn-item25">
+              <a href="http://bit.ly/2iCCc58">http://bit.ly/2iCCc58</a> <a href="#fn-return25">↩</a>
+            </li>
+            <li id="fn-item26">
+              <a href="http://bit.ly/2iFF1m5">http://bit.ly/2iFF1m5</a> and <a href="http://bit.ly/2BjbTwb">http://bit.ly/2BjbTwb</a> <a href="#fn-return26">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="component callout text">
+        <div class="copy">
+          <h4>Recommendations for licensing</h4>
+          <ul>
+            <li>
+              If information is in the public domain, use legally non-binding notices. These must be clear and should concisely inform users about their rights to use information.
+            </li>
+            <li>
+              For information not otherwise in the public domain, use CC0 for public domain dedication or standardized open licences, preferably CC BY 4.0. They can be reused by anyone, which helps ensure compatibility with other datasets.
+            </li>
+            <li>
+              In cases where governments prefer to use a customized open government licence, these licenses should provide the least restrictions possible, and allow users to combine the data or works with other openly licensed artifacts.
+            </li>
+            <li>
+              To guarantee a licence meets the open definition, we strongly recommend to submit the licence for <a href="http://opendefinition.org/licenses/process/">approval under the Open Definition</a>.
+            </li>
+            <li>
+              Carefully verify if small ‘micro-elements’ in your provisions, such as parties involved, rights granted, or conditions, cause incompatibilities with other licences.
+            </li>
+            <li>
+              Add compatibility statements to give legal certainty to users. These statements must explicitly name the licences and licence versions compatible with a custom licence.
+            </li>
+            <li>
+              Use notices to provide additional explanations and comments outside of the core licence text. This keeps the licence as simple and interoperable as possible.
+            </li>
+            <li>
+              Attach the licence clearly to the information to which it applies. Maintain stable links to licences so that users can access licence terms at all times.
+            </li>
+            <li>
+              Highlight the licence version and provide information how data can be used.
+            </li>
+            <li>
+              When publishing data, avoid any confusing or contradictory elements such as copyright notices in website footers. Clearly separate a website’s terms of use from the terms of open licences.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="acknowledgements">
+      <div class="component text">
+        <div class="copy">
+          <h2>Acknowledgements</h2>
+          <p>
+            I especially thank Sander van der Waal (Open Knowledge International) for his useful advice throughout the writing process of this report, as well as Vitor Baptista (Open Knowledge International) for supporting the analysis of open licence texts. My special thanks goes to Aaron Wolf for his support in editing the paper.
+          </p>
+          <p>
+            Furthermore, I would like to register my gratitude to the following people whom I interviewed, consulted or otherwise drew inspiration from in this project.
+          </p>
+          <p>
+            Nikesh Balami, Open Knowledge Nepal<br/>
+            Allison O’Beirne, Treasury Board of Canada Secretariat<br/>
+            Livar Bergheim, Agency for Public Management and eGovernment (Difi), Norway <br/>
+            Leigh Dodds, Open Data Institute<br/>
+            Stephen Gates, Open Data Institute Queensland<br/>
+            Bart Hanssens, FOD/SPF Bosa - DG Digital Transformation<br/>
+            Anne Kauhanen-Simanainen, Ministry of Finance, Finland<br/>
+            Suzanne McLaughlin, Ministry of Finance, Northern Ireland<br/>
+            Mike Linksvayer, Open Definition Advisory Council<br/>
+            Andrea Nelson Mauro, Dataninja.it<br/>
+            Walter Palmetshofer, Open Knowledge Foundation Germany<br/>
+            Diane Peters, Creative Commons<br/>
+            Teemu Ropponen, Open Knowledge Finland<br/>
+            Masahiko Shoji, Open Knowledge Japan<br/>
+            Audrey Tang, Digital Minister, Taiwan<br/>
+            Tarmo Toikkanen, Open Knowledge Finland<br/>
+            Martine Trznadel, Agence pour la simplification administrative, Belgium<br/>
+            Luis Villa, Open Definition Advisory Council<br/>
+            Tomoaki Watanabe, Open Knowledge Japan<br/>
+            Aaron Wolf, Open Definition Advisory Council<br/>
+            Enrique Zapata, Government of Mexico<br/>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="further-reading">
+      <div class="component text">
+        <div class="copy">
+          <h2>References and further reading</h2>
+          <p>
+            Creative Commons, ‘Public domain guidelines’, <a href="http://bit.ly/2j8CJzF">http://bit.ly/2j8CJzF</a>
+          </p>
+          <p>
+            Creative Commons, ‘State Department Publishes Open Licensing “Playbook” for Federal Agencies’, <a href="http://bit.ly/2jHbpGK">http://bit.ly/2jHbpGK</a>
+          </p>
+          <p>
+            Dataverse community norms: <a href="http://bit.ly/2iDLfmb">http://bit.ly/2iDLfmb</a>
+          </p>
+          <p>
+            European Commission, ‘Building a European data economy’, <a href="http://bit.ly/2hjwQuB">http://bit.ly/2hjwQuB</a>
+          </p>
+          <p>
+            European Commission, ‘European legislation on re-use of public sector information’, <a href="http://bit.ly/2AYIyGK">http://bit.ly/2AYIyGK</a>
+          </p>
+          <p>
+            European Parliament and European Council, ‘Directive 96/9/EC on the legal protection of databases’, <a href="http://bit.ly/1nHYqmK">http://bit.ly/1nHYqmK</a>
+          </p>
+          <p>
+            Ilaria Buri, ‘Accessing and Licensing Government Data under Open Access Conditions’, Creative Commons Netherlands, <a href="http://bit.ly/2iFF1m5">http://bit.ly/2iFF1m5</a>
+          </p>
+          <p>
+            Katherine Zimmerman, ‘U.S. copyright on a state level’, Office for Scholarly Communication, Harvard Library, <a href="http://bit.ly/1XyJWWd">http://bit.ly/1XyJWWd</a>
+          </p>
+          <p>
+            Legal aspects of public sector information (LAPSI), ‘Licensing Guidelines’, <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a>
+          </p>
+          <p>
+            Legal aspects of public sector information (LAPSI), ‘Licence interoperability report’, <a href="http://bit.ly/2A7ab0G">http://bit.ly/2A7ab0G</a>
+          </p>
+          <p>
+            New Zealand Government Open Access and Licensing Framework, ‘Guidance and Resources’, <a href="http://bit.ly/1zZi8PQ">http://bit.ly/1zZi8PQ</a>
+          </p>
+          <p>
+            Open Data Commons, ‘Licenses’, <a href="http://bit.ly/2j9MopI">http://bit.ly/2j9MopI</a>
+          </p>
+          <p>
+            Open Knowledge International, Open Definition 2.1, <a href="http://bit.ly/1SknmNZ">http://bit.ly/1SknmNZ</a>
+          </p>
+          <p>
+            Open Knowledge International, ‘Open Definition Licence Approval Process’, <a href="http://bit.ly/2y86wtL">http://bit.ly/2y86wtL</a>
+          </p>
+          <p>
+            Open Source Initiative, ‘Report of License Proliferation Committee’, <a href="http://bit.ly/2BXzLCK">http://bit.ly/2BXzLCK</a>
+          </p>
+          <p>
+            OpenStreetMap Foundation, ‘Why CC BY-SA is unsuitable’, <a href="http://bit.ly/2kwK1O0">http://bit.ly/2kwK1O0</a>
+          </p>
+          <p>
+            Po-yu Tseng, Mei-chun Lee, ‘Taiwan Open Government Data Report’, Open Culture Foundation: <a href="http://bit.ly/2A5i4Qg">http://bit.ly/2A5i4Qg</a>
+          </p>
+          <p>
+            The National Archives, ‘UK Crown Bodies’, <a href="http://bit.ly/2uyB85T">http://bit.ly/2uyB85T</a>
+          </p>
+          <p>
+            U.S. Copyright Law Revision: <a href="http://bit.ly/2BbY7vf">http://bit.ly/2BbY7vf</a>
+          </p>
+          <p>
+            World Intellectual Property Organisation, ‘Scoping Study on Copyright and related rights and the public domain’, <a href="http://bit.ly/2iYygiX">http://bit.ly/2iYygiX</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+    <script src="../js/base.js"></script>
+  </body>
+</html>
