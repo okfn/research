@@ -57,18 +57,26 @@
         <div class="copy">
           <h3>We conclude:</h3>
           <ul>
-            <li>
-              There is significant friction in the uptake of spatial data by non-GIS-expert users. This problem can be addressed by two adding a small amount of metadata, and some data processing conventions to existing Data Package standards.
-              <ul>
-                <li>
-                  Tabular Data Package, with "location" resource attribute, for datasets consisting of points (or rather, rows with point locations).
-                </li>
-                <li>
-                  Data Package containing GeoJSON files, with "location" resource attribute, for vector datasets of line and polygon data.
-                </li>
-              </ul>
-            </li>
-          </ul>
+<li>
+<p>There is significant friction in the uptake of spatial data by non-GIS-expert users. This problem can be addressed by two adding a small amount of metadata, and some data processing conventions to existing Data Package standards.</p>
+<ul>
+<li>
+<p>Tabular Data Package, with "location" resource attribute, for datasets consisting of points (or rather, rows with point locations).</p>
+</li>
+<li>
+<p>Data Package containing GeoJSON files, with "location" resource attribute, for vector datasets of line and polygon data.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>There is no good solution for a common kind of semi-spatial data, that of tabular data that links to standard boundaries such as administrative or statistical regions. We propose:</p>
+<ul>
+<li>Tabular Data Package, with "location" resource attribute linking boundary identifiers to yet-to-be-defined standard codelists.</li>
+</ul>
+</li>
+<li>
+<p>For cases where the above solutions do not meet the package creator's need, including raster data or data that is not under the package creator's direct control, we propose improvements to the emerging Spatial Data Package format already under way.</p>
+</li>
         </div>
         <div class="footnotes">
         </div>
@@ -79,9 +87,79 @@
       <div class="component text">
         <div class="copy">
           <h2>Introduction</h2>
-          <p>
-            Geospatial data – data relating to locations on the Earth’s surface – makes up a significant proportion of all the data regularly shared on open data platforms. It is frequently of immediate, direct value and datasets such as property or government administrative boundaries are sought out even by users with little background in geospatial data.
-          </p>
+
+<p>Spatial (or "geospatial") data – data relating to locations on the Earth’s surface –&nbsp;makes up a significant proportion of all the data regularly shared on open data platforms. It is frequently of immediate, direct value and datasets such as property or government administrative boundaries are sought out even by users with little background in geospatial data.</p><h3 id="overview-of-spatial-data">Overview of spatial data</h3><p>The most commonly shared forms of spatial data are:</p><ul>
+<li>
+<p>Vector features: points, lines, polygons and composite types such as multi-polygons (for instance, an archipelago). Usually expressed as "geometry" (the shape of the feature) and "attributes" (data including names, descriptions, or numeric fields associated with the described feature).</p>
+</li>
+<li>
+<p>Raster: an image geo-referenced with spatial coordinates, such as aerial imagery, grids of data calculated across an area, or pre-generated map images.</p>
+</li>
+</ul><p>Other types of geospatial data less commonly shared on government open data platforms include:</p><ul>
+<li>
+<p>Tiles: vector or raster data split along pre-defined boundaries to facilitate transport and displaying maps.</p>
+</li>
+<li>
+<p>Multi-dimensional array data and coverages <sup><a href="#fn-item1" id="fn-return1">1</a></sup>: complex data such as climate models which relate to the earth’s surface in three dimensions, plus time, and may depend on other parameters as well. Usually represented with <a href="https://www.unidata.ucar.edu/software/netcdf/" target="_blank">NetCDF</a>.</p>
+</li>
+<li>
+<p>Point clouds: large numbers of points in 3D space, with colour, captured by specialised cameras, to reconstruct a virtual environment.</p>
+</li>
+<li>
+<p>3D models: fully three-dimensional representations of objects such as buildings or trees located in geospatial space.</p>
+</li>
+<li>
+<p>Video</p>
+</li>
+<li>
+<p>Geo-temporal features: various combinations of space and time dimensions, such as:</p>
+<ul>
+<li>
+<p>A point with a data dimension that varies over time, such as the height of a river.</p>
+</li>
+<li>
+<p>A point that moves over time, such as the location of a ship.</p>
+</li>
+<li>
+<p>A moving point with a time-series data dimension, such as a sensor attached to a moving ship.</p>
+</li>
+<li>
+<p>A point situated at a moment in time, such as earthquakes.</p>
+</li>
+<li>
+<p>A point (or other feature) related to a period of time, such as road closures.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Curves</p>
+</li>
+</ul><p>There is also data which relates implicitly to geometry not specified directly:</p><ul>
+<li>
+<p>Points identified by place name (eg, "Melbourne, Australia"). This is a type of geocoding.</p>
+</li>
+<li>
+<p>Administrative or statistical boundaries identified by identifier (eg, "France").</p>
+</li>
+<li>
+<p>Other data identified in a way relevant to the particular context, such as roads identified by name or number, segments of a city identified by a study area identifier, and so on.</p>
+</li>
+</ul><h3 id="use-cases">Use cases</h3><p>Several of the most common open data uses case involving spatial data are:</p><ul>
+<li>
+<p>Importing authoritative boundaries (such as property boundaries, or administrative regions such as councils or states) for a wide variety of tasks in urban planning, property development, city management, etc.</p>
+</li>
+<li>
+<p>Assembling maps of layers from different sources (such as roads, trees and rivers) for human interpretation. Modern tools make this kind of task very accessible to people without specialist geospatial expertise.</p>
+</li>
+<li>
+<p>Performing spatial analysis using data from different sources to find patterns between them (such as in population health, transport planning etc).</p>
+</li>
+<li>
+<p>Combining data that relates to boundaries (such as average age per statistical area) with the geometry of those boundaries to produce a choropleth map.</p>
+</li>
+</ul><p>For the purpose of this investigation, we focus on general purpose spatial data, particularly in the context of sharing data between different communities, and especially communities that do not have significant spatial expertise.</p>
+
+
         </div>
         <div class="footnotes">
           <ol class="foot-notes">
@@ -96,56 +174,687 @@
     <section>
       <div class="component text">
         <div class="copy">
-          <h2>Can Frictionless Data help?</h2>
-          <p>When considering new specifications we have to weigh up:</p>
+          <h2>Existing spatial file formats for vector data</h2>
+<p>In addition to the following spatial <em>file</em> formats, there are many spatial data <em>service</em> standards, which we do not consider relevant. Those include WMS, WFS and Esri’s services, and allow accessing portions of data on demand, rather than bulk download.</p><p>The discussion below is far from comprehensive. See for instance Pons and Masó (NOTE:  <a href="http://www.sciencedirect.com/science/article/pii/S0098300416303533?via%3Dihub" target="_blank">http://www.sciencedirect.com/science/article/pii/S0098300416303533?via%3Dihub</a>)’s analysis of 7 formats for packaging spatial data in the sciences, with more stringent requirements such as "metadamodel identity" and "disclosure".</p><h3 id="shapefile">Shapefile</h3><p>Esri’s Shapefile format is still dominant within government and as a general purpose interchange format, particularly between groups that do not often exchange geospatial data. It has some serious technical shortcomings:</p><ul>
+<li>
+<p>Feature property names have a maximum length of 10 characters, lack case, and don’t support Unicode. (They are stored in a .dbf file, in dBase IV format, which dates from 1988 (NOTE:  <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000325.shtml" target="_blank">https://www.loc.gov/preservation/digital/formats/fdd/fdd000325.shtml</a>).)</p>
+</li>
+<li>
+<p>A "Shapefile" is actually at least 3 files, and possibly more. This is inconvenient for use cases such as uploading into the browser, which usually requires zipping the files together first.</p>
+</li>
+<li>
+<p>Shapefiles can use essentially any coordinate reference system. The associated .prj file which defines this system is optional, meaning the consumer may have no direct way to determine the projection of a given file (NOTE:  <a href="https://gis.stackexchange.com/questions/7839/identifying-coordinate-system-of-shapefile-when-unknown" target="_blank">https://gis.stackexchange.com/questions/7839/identifying-coordinate-system-of-shapefile-when-unknown</a>).</p>
+</li>
+<li>
+<p>The geometry and attribute files are binary, which makes manipulating them by hand or using web technologies difficult.</p>
+</li>
+<li>
+<p>Maximum file size of 2GB, inability to mix geometry, poor projection interoperability, maximum of 255 attributes and other issues. (NOTE:  <a href="http://switchfromshapefile.org/" target="_blank">http://switchfromshapefile.org/</a>)</p>
+</li>
+</ul><h3 id="gml">GML</h3><p>The Geography Markup Language (GML) (NOTE:  <a href="http://www.opengeospatial.org/standards/gml" target="_blank">http://www.opengeospatial.org/standards/gml</a>) is an XML standard from the Open Geospatial Consortium. Like many OGC standards, it is extremely comprehensive and detailed, which makes it also cumbersome to work with. It (and its variants) are used in many specialised domains but less so as a general purpose data interchange format.</p><h3 id="geojson">GeoJSON</h3><p>GeoJSON, released in 2008 then updated in 2016, is a single-file format based on JSON, geared towards web applications. It supports points, lines, polygons, multipoints, multilines and multipolygons, properties on those objects (with JSON’s type system of integers, floats, strings, booleans and nulls) with well-defined orderings for topologies such as rings.</p><p>Benefits include:</p><ul>
+<li>
+<p>Can be read and written by hand.</p>
+</li>
+<li>
+<p>Geodata can be embedded directly within software source code or within other JSON data files (eg, Mapbox style files (NOTE:  <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-geojson" target="_blank">https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-geojson</a>)).</p>
+</li>
+<li>
+<p>Very easy to load, manipulate and save in a wide variety of languages, without requiring specialist geospatial libraries.</p>
+</li>
+<li>
+<p>Extensible, additional data and metadata can be easily added.</p>
+</li>
+<li>
+<p>The specification itself is short and easily understandable.</p>
+</li>
+</ul><p>Some shortcomings include:</p><ul>
+<li>
+<p>Somewhat space-inefficient compared to binary formats or TopoJSON. (A protocol-buffer encoding of GeoJSON can rectify this (NOTE:  <a href="https://github.com/mapbox/geobuf" target="_blank">https://github.com/mapbox/geobuf</a>)).</p>
+</li>
+<li>
+<p>Coordinates must be specified in lat/long (EPSG:4326). Projected coordinates are intentionally not supported.</p>
+</li>
+<li>
+<p>No support for raster data including rendered tiles.</p>
+</li>
+<li>
+<p>No standard support for styling. Some basic styling supported through the <a href="https://github.com/mapbox/simplestyle-spec" target="_blank">simplestyle-spec</a> convention.</p>
+</li>
+<li>
+<p>Non-compliant GeoJSON is easy to produce, and is somewhat common.</p>
+</li>
+<li>
+<p>No mechanism for schemas. There is no standard way to describe what the fields mean, or indicate whether every feature has every field.</p>
+</li>
+</ul><p>GeoJSON is very well supported in modern web mapping applications such as Mapbox, Leaflet, and Turf, but remains somewhat patchy in desktop applications.</p><h3 id="geopackage-2014">GeoPackage (2014)</h3><p>GeoPackage is a rich geospatial data format defined as a way of packaging data within an SQLite container, geared towards mobile applications. Thus any environment which supports SQLite also supports random access on GeoPackage data files, querying, filtering and so on.</p><p>GeoPackage can store features, and also tile "pyramids" - sets of raster or vector data carved into pre-defined units to facilitate easy transport of data to browsers or mobile applications for displaying maps.</p><p>Although useful for certain applications it is not commonly seen as an interchange format.</p><h3 id="csv">CSV</h3><p>Comma-separated value files are widely used for distributing non-spatial data. There are various ways of representing spatial data in CSVs, but no convention or standard has achieved dominance. Each feature is generally represented as a row, with one or two geometry columns.</p><p>CSV is appealing as an open data format for point data because it is familiar to a large audience of people who do not regularly use spatial data. It thus allows data to flow across domains of practice, which is particularly valuable.</p><p>Point data can be represented in CSV several different ways including:</p><ul>
+<li>
+<p>Separate latitude and longitude columns: There is disagreement about what they should be called:</p>
+<ul>
+<li>
+<p>Latitude, Longitude</p>
+</li>
+<li>
+<p>Lat, Lon</p>
+</li>
+<li>
+<p>Lat, Lng</p>
+</li>
+<li>
+<p>Y, X</p>
+</li>
+<li>
+<p>Easting,Northing (using projected coordinates)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Comma separated "-37.8,144.9" (or equally, "144.9,-37.8" - known as "GeoPoint (NOTE:  Apparently this format was borrowed from ElasticSearch. <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html" target="_blank">https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html</a>)", "default" format, in the Table Schema specification (NOTE:  <a href="https://frictionlessdata.io/specs/table-schema/" target="_blank">https://frictionlessdata.io/specs/table-schema/</a>))</p>
+</li>
+<li>
+<p>Comma separated with parentheses  "(-37.8, 144.9)" (NOTE:  Socrata’s CSV export.)</p>
+</li>
+<li>
+<p>Comma separated with brackets (GeoPoint, "array" format)</p>
+</li>
+<li>
+<p><a href="http://docs.opengeospatial.org/is/12-063r5/12-063r5.html" target="_blank">Well-known text</a> (NOTE:  <a href="http://docs.opengeospatial.org/is/12-063r5/12-063r5.html" target="_blank">http://docs.opengeospatial.org/is/12-063r5/12-063r5.html</a>, 2015.) (WKT): eg "POINT (144.9 -37.8)"</p>
+</li>
+<li>
+<p>And more. (NOTE:  <a href="https://frictionlessdata.io/guides/point-location-data/" target="_blank">https://frictionlessdata.io/guides/point-location-data/</a>)</p>
+</li>
+</ul><p>Other forms of vector data can be expressed in a geometry column using:</p><ul>
+<li>
+<p>Well-Known Text</p>
+</li>
+<li>
+<p>GeoJSON (although this use is dubious, extremely space inefficient, and creates issues with escaping double quotes)</p>
+</li>
+<li>
+<p>In theory, other formats are possible, such as Google’s Encoded PolyLine format. (NOTE:  <a href="https://developers.google.com/maps/documentation/utilities/polylinealgorithm" target="_blank">https://developers.google.com/maps/documentation/utilities/polylinealgorithm</a><br>
+)</p>
+</li>
+</ul><p>Related: <a href="http://frictionlessdata.io/specs/csv-dialect/" target="_blank">CSV Dialect</a>.</p><p>Because there is not any conventional way to attach metadata to a CSV file describing which of these methods is being used, some tools have defined their own. For instance, GDAL uses an optional file called VRT to define exactly which fields contain geometry (NOTE:  <a href="http://www.gdal.org/drv_csv.html" target="_blank">http://www.gdal.org/drv_csv.html</a>).</p><p>Attempts to define how geospatial data is captured within CSV include:</p><ul>
+<li>
+<p>GeoCSV (NOTE:  <a href="https://giswiki.hsr.ch/GeoCSV" target="_blank">https://giswiki.hsr.ch/GeoCSV</a> (also used as original name for FD support <a href="https://github.com/frictionlessdata/specs/issues/81" target="_blank">https://github.com/frictionlessdata/specs/issues/81</a>)<br>
+)</p>
+</li>
+<li>
+<p>Csv-geo-au (NOTE:  <a href="https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au" target="_blank">https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au</a>): a context-free specification for CSV which uses column naming conventions to map field values to point locations or pre-defined administrative and statistical boundaries. (NOTE:  Disclosure: Steve Bennett, author of this report, was a significant contributor to Csv-geo-au)</p>
+</li>
+</ul><p>So, overall, disadvantages of CSV include:</p><ul>
+<li>
+<p>Poor standardisation of the CSV format itself.</p>
+</li>
+<li>
+<p>Poor standardisation of geospatial data within CSV.</p>
+</li>
+<li>
+<p>Lack of type information: numbers and strings are not differentiated.</p>
+</li>
+<li>
+<p>No standard place to put metadata.</p>
+</li>
+<li>
+<p>Inability to distinguish a CSV file containing location information from one that doesn’t. (For this reason, the former type are given a resource type of "csv-geo-au" on <a href="http://data.gov.au" target="_blank">data.gov.au</a>, rather than "csv")</p>
+</li>
+</ul>
 
-          <h3>Data Package workflows to consider</h3>
+
         </div>
         <div class="footnotes">
-
+          <ol class="foot-notes">
+            <li id="fn-item1">
+              <a href="https://www.w3.org/TR/sdw-bp/#dfn-coverage">https://www.w3.org/TR/sdw-bp/#dfn-coverage</a> <a href="#fn-return1">↩</a>
+            </li>
+          </ol>
         </div>
       </div>
-      <div class="component figure">
-        <table>
-          <thead>
-            <tr>
-              <th>Tool category</th>
-              <th>Example</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                Libraries that load a DP into a programming environment for analysis.
-              </td>
-              <td>
-                Datapackage-rb, tableschema-py and many others
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    </section>
+
+    <section>
       <div class="component text">
         <div class="copy">
-          <h3>Recommendations</h3>
-          <h4>Location metadata</h4>
-          <p>
-            Given that location information can exist in conjunction with other kinds of data, we recommend that two types of location metadata be included in Data Package descriptors where appropriate:
-          </p>
+          <h2>Spatial data sharing pain points</h2>
+<h3 id="size">Size</h3><p>Once files get larger than ~10MB, previewing a whole GeoJSON file in the browser becomes impractical. Setting up a spatial data server such as GeoServer is too complex for the reward, so the fall-back is to download the whole dataset and preview locally in QGIS.</p><h3 id="projections">Projections</h3><p>Spatial data is generally developed within a specific projection adopted by the relevant organisation. Although it is essentially trivial to reproject data from one coordinate reference system to another, this requires three things:</p><ol>
+<li>
+<p>Awareness that data can exist in different projections, and that whatever the user is attempting to do may require a different projection.</p>
+</li>
+<li>
+<p>Knowledge of what projection the source data is in, and getting that information expressed in the right format (often an EPSG code, such as EPSG:4283)</p>
+</li>
+<li>
+<p>Using a tool such as GDAL’s OGR2OGR to perform the projection.</p>
+</li>
+</ol><p>For a GIS professional, this process might take a couple of minutes. It can completely stump a GIS newbie, or leave them floundering for hours. According to Tom Macwright, formerly Mapbox technical lead, and heavily involved in developing several open geospatial standards (NOTE:  <a href="https://macwright.org/2015/03/23/geojson-second-bite" target="_blank">https://macwright.org/2015/03/23/geojson-second-bite</a>):</p><p><strong><em>Data projections are friction.</em></strong>* If you aren’t a surveyor and don’t actually have centimeter-accuracy data, using projections adds friction for users: instead of simply downloading and using data, they need to determine the projection - sometimes manually - and occasionally even need to load in new projection definitions in order to use it. And they usually, off the bat, just convert it to EPSG:4326.*</p><p><em>So, the take-home lesson of data projections is that they’re useful for extremely-high precision datasets. But such data is rare, and usually the GeoJSON default of EPSG:4326 is a better choice for sharing and storing data.</em></p><h3 id="geocoding-place-names">Geocoding place names</h3><p>Converting a place name to a location requires using a geocoding or gazetteer service. Many national and subnational gazetteers exist, as well as a few international ones:</p><ul>
+<li>
+<p><a href="https://whosonfirst.mapzen.com/" target="_blank">Who’s On First</a> (NOTE:  <a href="https://whosonfirst.mapzen.com/" target="_blank">https://whosonfirst.mapzen.com/</a>), by Mapzen, claims 22 million records.</p>
+</li>
+<li>
+<p>GeoNames (NOTE:  <a href="http://www.geonames.org/" target="_blank">http://www.geonames.org/</a>) claims 11 million records.</p>
+</li>
+</ul><p>Issues:</p><ul>
+<li>
+<p>There’s no conventional way to define the column(s) containing the place name data.</p>
+</li>
+<li>
+<p>There’s no standard list of place names, nor is such a thing likely to exist, due to the nature of small places, diverse language and spelling, and varying administrative practices.</p>
+</li>
+</ul><h3 id="metadata">Metadata</h3><p>There do not appear to be any widely used, open standards for documenting basic geospatial metadata independent of the data itself. <a href="https://www.iso.org/standard/53798.html" target="_blank">ISO 19115-1:2014</a> provides a metadata schema, implemented by Esri’s Shapefile (NOTE: <a href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/metadata/support-for-iso-metadata-standards.htm" target="_blank">http://desktop.arcgis.com/en/arcmap/10.3/manage-data/metadata/support-for-iso-metadata-standards.htm</a>) but is closed. This means there is not a convenient way to provide accessible information about:</p><ul>
+<li>
+<p>The full name, description, provenance and other information about each layer.</p>
+</li>
+<li>
+<p>The full name, description and type of each property.</p>
+</li>
+</ul><h3 id="boundary-linked-data">Boundary-linked data</h3><p>It is very common for data to reference boundaries which are assumed to be known to the consumer. These may be administrative (such as country or state borders), statistical (such as census districts or Australia’s "statistical areas" (NOTE:  <a href="http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)" target="_blank">http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)</a>)), or a diverse range of other possibilities, such as water catchments, ecological zones, tourism districts etc.</p><p>Although tools such as CARTO and Tableau support the concept of linking place names to pre-defined geometries, there does not appear to be any standard way of managing this process, or even describing it:</p><ul>
+<li>
+<p>CARTO: "Georeferencing by country, state, province or municipality"</p>
+</li>
+<li>
+<p>Tableau: "Location names recognized by Tableau" (NOTE:  <a href="http://onlinehelp.tableau.com/current/pro/desktop/en-us/maps_howto_choropleth.html" target="_blank">http://onlinehelp.tableau.com/current/pro/desktop/en-us/maps_howto_choropleth.html</a>), "region map", and terms like "Latitude (generated)" (NOTE:  <a href="http://kb.tableau.com/articles/howto/How-to-create-a-multi-color-choropleth-map" target="_blank">http://kb.tableau.com/articles/howto/How-to-create-a-multi-color-choropleth-map</a>).</p>
+</li>
+<li>
+<p>TerriaJS: "Region mapping" (NOTE:  <a href="http://terria.io/Documentation/guide/deploying/setting-up-a-region-mapping-server/" target="_blank">http://terria.io/Documentation/guide/deploying/setting-up-a-region-mapping-server/</a>)</p>
+</li>
+<li>
+<p>Socrata: "Boundary maps" (NOTE:  <a href="https://support.socrata.com/hc/en-us/articles/202950518-Make-classic-point-heat-and-boundary-maps" target="_blank">https://support.socrata.com/hc/en-us/articles/202950518-Make-classic-point-heat-and-boundary-maps</a>)</p>
+</li>
+</ul><p>We use the term "boundary-linked data".</p><p>A global solution needs:</p><ul>
+<li>
+<p>A defined identifier for the type of boundary being referenced. (eg, "AU:State_name")</p>
+</li>
+<li>
+<p>A defined set of identifiers for those boundaries. (eg, "Victoria")</p>
+</li>
+<li>
+<p>A way to specify different versions of those boundaries (eg, "AU:State_name:2008").</p>
+</li>
+</ul><p>Current solutions:</p><ul>
+<li>
+<p><a href="http://www.gadm.org/" target="_blank">GADM</a> (NOTE:  <a href="http://www.gadm.org/" target="_blank">http://www.gadm.org/</a>) (Global Administrative Areas): a downloadable database of 294,430 administrative areas.</p>
+</li>
+<li>
+<p>MapIt (NOTE:  <a href="http://mapit.openlocal.org.au/" target="_blank">http://mapit.openlocal.org.au/</a>) is an open-source (NOTE:  <a href="https://github.com/mysociety/mapit" target="_blank">https://github.com/mysociety/mapit</a>) platform providing a lookup service. Given a lat/long, it returns a list of boundaries that the point is within. It is not clear if the supported boundaries follow any standards. The UK deployment contains boundaries of Greater London Authority (GLA), London borough (LBO), London borough ward (LBW), European region (EUR), London assembly constituency (LAC), "2001 Middle Layer Super Output Area (Full)" (OMF), "2001 Middle Layer Super Output Area (Generalised)" (OMG) and a number more.</p>
+</li>
+</ul><p>Relevant standards:</p><ul>
+<li>
+<p><a href="https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au" target="_blank">CSV-Geo-AU</a> (NOTE:  <a href="https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au" target="_blank">https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au</a>), supporting many administrative, statistical and other kinds of boundaries in Australia. A dataset conforming to the specification can be dragged and dropped onto <a href="http://nationalmap.gov.au" target="_blank">nationalmap.gov.au</a> and displayed as a choropleth nearly instantly (NOTE:  The boundaries themselves are transported as vector tiles, and all the rendering happens in the browser. Hence, the dataset doesn’t need to be sent anywhere.).</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1</a> (NOTE:  <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">https://en.wikipedia.org/wiki/ISO_3166-1</a>) defines canonical names for countries. ISO 3116-1 alpha-2 and ISO 3116-1 alpha-3 define two- and three-letter codes.</p>
+</li>
+<li>
+<p>ISO 3166-2 defines alpha-numeric codes for either one or two levels of administrative subdivision for each country, consisting of 1-3 characters appended to the country code. For instance, the French <em>région</em> of Corsica is FR-COR, which consists of the <em>départements</em> of FR-2A (Corse-du-Sud) and FR-2B (Haute-Corse).</p>
+</li>
+<li>
+<p>NUTS (NOTE:  <a href="https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics" target="_blank">https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics</a>) defines codes for statistical areas of European Union countries at several levels. For instance, DE2 is the German area of Bayern, DE27 is Swabia and DE279 is Neu-Ulm (NOTE:  <a href="https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Germany" target="_blank">https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Germany</a>).</p>
+</li>
+<li>
+<p>UN M.49 (NOTE:  <a href="https://en.wikipedia.org/wiki/UN_M.49" target="_blank">https://en.wikipedia.org/wiki/UN_M.49</a>) is a UN standard (NOTE:  <a href="https://unstats.un.org/unsd/methodology/m49/" target="_blank">https://unstats.un.org/unsd/methodology/m49/</a>) defining numeric codes for individual countries and groups of countries. For instance, 009 is Oceania.</p>
+</li>
+</ul><p>There does not yet appear to be a global standard for statistical geography, although a Global Statistical Geospatial Framework (NOTE:  <a href="http://www.efgs.info/information-base/production-model/global/" target="_blank">http://www.efgs.info/information-base/production-model/global/</a><br>
+) is being developed through the UN (NOTE:  <a href="http://ggim.un.org/ggim_20171012/docs/meetings/3rd%20UN-EG-ISGI/3rd%20UN%20EG%20ISGI%20-%20session2%20-%20Global%20SGF%20summary.pdf" target="_blank">http://ggim.un.org/ggim_20171012/docs/meetings/3rd UN-EG-ISGI/3rd UN EG ISGI - session2 - Global SGF summary.pdf</a>), based on Australia’s Australian Statistical Geographical Standard.</p><p>Summary:</p><ul>
+<li>
+<p>A standard way to link to countries and first (and sometimes second) level administrative regions is easy, with ISO 3166.</p>
+</li>
+<li>
+<p>There is no existing global standard for statistical boundaries.</p>
+</li>
+</ul><h4 id="solution">Solution?</h4><p>A solution in this area would have to be extensible and global in scope. If it followed the approach of csv-geo-au in which the column name provides all needed context, it would probably have to allow boundaries of limited scope to be namespaced within larger units. (The namespacing itself could follow ISO 3166). For instance:</p><ul>
+<li>
+<p>Country 		country borders, global scope (not namespaced)</p>
+</li>
+<li>
+<p>UK:Postcode		postcodes within the UK</p>
+</li>
+<li>
+<p>AU:VIC:Electorate	State electorates within the Australian state of Victoria</p>
+</li>
+</ul>
 
-          <h5>Package-level “spatial-profile” attribute</h5>
-          <p>
-            One of:
-          </p>
 
-          <figure>
-<pre><code class="language-json">{
-	"spatial-profile": "tabular-points",
-	"spatial-profile": "simple-vector",
-	"spatial-profile": "raster",
-	"spatial-profile": "vector"
-}</code></pre>
-          </figure>
+        </div>
+        <div class="footnotes">
+          <ol class="foot-notes">
+            <li id="fn-item1">
+              <a href="https://www.w3.org/TR/sdw-bp/#dfn-coverage">https://www.w3.org/TR/sdw-bp/#dfn-coverage</a> <a href="#fn-return1">↩</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section>
+      <div class="component text">
+        <div class="copy">
+          <h2>Can Frictionless Data help?</h2>
+
+<p>When considering new specifications we have to weigh up:</p><ul>
+<li>
+<p>Can they address some of the pain points described above?</p>
+</li>
+<li>
+<p>How will they fit into existing Data Package workflows?</p>
+</li>
+<li>
+<p>How will they meet the design principles of Frictionless Data, such as "zen-like simplicity".</p>
+<ul>
+<li>
+<p>There are already around 10 Frictionless Data specifications, and contributing to this number risks creating complexity and confusion.</p>
+</li>
+<li>
+<p>Secondly, the range of spatial data may be too broad for a single specification to make sense. Datasets of points with many attributes have more in common with tabular data than with raster data, for instance.</p>
+</li>
+</ul>
+</li>
+</ul><p>There is an overlap between spatial "point" data and "tabular" data. Consider a dataset of wildlife sightings reported by a city’s residents, each including the species, identification notes, date and time, and location. (NOTE: For instance, <a href="https://data.melbourne.vic.gov.au/Environment/BioBlitz-2014/a945-pqqr" target="_blank">https://data.melbourne.vic.gov.au/Environment/BioBlitz-2014/a945-pqqr</a>) Is this a tabular dataset (suitable for analysis with a spreadsheet application), or a spatial dataset (suitable for analysis with GIS or making a map)? In fact, it’s both.</p><p>We do not want to create friction by forcing data custodians to choose between making such a dataset a "tabular" or "spatial" Data Package, nor force consumers to separately look in "spatial" vs "non-spatial" catalogues.</p><h3 id="data-package-workflows-to-consider">Data Package workflows to consider</h3><div class="component figure"><table>
+    <thead><tr>
+    <th>Tool category</th>
+    <th>Example</th>
+        </tr></thead>
+<tbody>
+  <tr>
+    <td>Libraries that load a DP into a programming environment for analysis.</td>
+    <td>Datapackage-rb, tableschema-py and many others. </td>
+  </tr>
+  <tr>
+    <td>Tools that assemble DPs from heterogeneous sources, with hand-crafted scripts.</td>
+    <td>DataRetriever</td>
+  </tr>
+  <tr>
+    <td>Platforms that offer DPs as an output format.</td>
+    <td>Data.World</td>
+  </tr>
+  <tr>
+    <td>Tools that allow a data custodian to package their data as a DP.</td>
+    <td>DataPackagist, DataCurator</td>
+  </tr>
+  <tr>
+    <td>Catalogues and discovery tools that facilitating finding and downloading DPs.</td>
+    <td>DataHub, DataRetriever</td>
+  </tr>
+  <tr>
+    <td>Analysis platforms that accept DPs as input.</td>
+    <td>OpenSpending</td>
+  </tr>
+  </tbody></table></div><p>These can be boiled down to:</p><ol>
+<li>
+<p>Authoring tools.</p>
+</li>
+<li>
+<p>Distribution infrastructure.</p>
+</li>
+<li>
+<p>Consumer-facing analysis tools.</p>
+</li>
+<li>
+<p>Direct access by consumers without DP-specific tooling.</p>
+</li>
+</ol><p>We thus consider each of the major kinds of spatial data, and how each should best be handled within the Data Package world:</p><ul>
+<li>
+<p>Points</p>
+</li>
+<li>
+<p>Simple vector data (lines and polygons)</p>
+</li>
+<li>
+<p>Tabular data linked to standard boundaries</p>
+</li>
+<li>
+<p>Complex spatial data, including raster data</p>
+</li>
+</ul><h3 id="comprehensive-or-minimal">Comprehensive or minimal?</h3><p>There is a choice in how prescriptive a specification should be. We will look at two options, called for the sake of argument "minimal SDP" and "comprehensive SDP":</p><ul>
+<li>
+<p>Minimal SDP:</p>
+<ul>
+<li>
+<p>Point data prepared in a strict CSV format with optional GeoJSON alternative representation, plus metadata.</p>
+</li>
+<li>
+<p>Other vector data prepared as GeoJSON, plus metadata. No support for other spatial formats, projections, or raster data.</p>
+</li>
+<li>
+<p>Does not necessarily involve a new DP profile.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Comprehensive SDP: broad range of spatial types, formats and projections supported, so most existing spatial data on the web can be packaged without altering it.</p>
+</li>
+</ul><p>We can consider formalising the Minimal SDP, the Comprehensive SDP, or both.</p><h4 id="only-minimal-sdps">Only minimal SDPs</h4><ol>
+<li>
+<p>Authoring tools will take shapefiles and other vector formats and spit out either TDPs or minimal SDPs, likely requiring GDAL. The heavy lifting happens here.</p>
+</li>
+<li>
+<p>Distribution infrastructure can easily provide visualisations of TDPs or minimal SDPs and use libraries such as Turf (NOTE:  <a href="http://turfjs.org" target="_blank">http://turfjs.org</a>).</p>
+</li>
+<li>
+<p>Consumer-facing analysis tools have an easy job, because they’re dealing with a narrow range of formats.</p>
+</li>
+<li>
+<p>Direct access by consumers is facilitated, because they don’t need to deal with different formats, projections, etc. Any minimal SDP always behaves the same way.</p>
+</li>
+</ol><h4 id="only-comprehensive-sdps">Only comprehensive SDPs</h4><ol>
+<li>
+<p>Authoring tools are simplified because they don’t really need to look inside the spatial data being wrapped. They just ask questions like what projection and format it is, and maybe attempt to compute bounds.</p>
+</li>
+<li>
+<p>Distribution infrastructure has a harder time. It can visualise some formats, but there’s a lot of complexity to constantly manage.</p>
+</li>
+<li>
+<p>Consumer-facing analysis tools also have a hard time. They can’t do much without a full spatial library like GDAL. (Compared to, say, TurfJS).</p>
+</li>
+<li>
+<p>There is not much benefit for consumers accessing data directly over the current state of affairs. They get some benefits from layers being properly described, and the projection is recorded if they look in the datapackage.json.</p>
+</li>
+</ol><h4 id="both">Both</h4><p>In this scenario, minimal SDPs are strongly preferred, where appropriate, but comprehensive SDPs can be created if needed.</p><ol>
+<li>
+<p>Authoring tools could support either or both.</p>
+</li>
+<li>
+<p>Distribution infrastructure could easily support minimal SDPs with some support for comprehensive SDPs if useful. This tradeoff would be expected by those creating comprehensive SDPs.</p>
+</li>
+<li>
+<p>Consuming-facing analysis tools similarly have a reasonable trade-off.</p>
+</li>
+<li>
+<p>Consumers directly accessing DPs win when they are minimal. There is potential for confusion if the types are not well explained and named. Consumers of comprehensive DPs in certain domains win by having spatial data in their expected format, with extra metadata.</p>
+</li>
+</ol><h4 id="recommendation">Recommendation</h4><p>We lean towards the "both" option, with further discussion with the community to choose a path forward, and to come up with clear names and guidance.</p><h3 id="recommendations">Recommendations</h3><h4 id="location-metadata">Location metadata</h4><p>Given that location information can exist in conjunction with other kinds of data, we recommend that two types of location metadata be included in Data Package descriptors where appropriate:</p><ul>
+<li>
+<p>Package-level <strong>"spatial-profile"</strong> attribute indicates that the Data Package contains location information, and what sort it is. This makes filtering for location-containing Data Packages easy. (This attribute may be superfluous, in that it can be inferred from attributes on the resources.)</p>
+</li>
+<li>
+<p>Resource-level <strong>"locations"</strong> attribute indicates where (if at all) location information can be found within a resource, and how to interpret it. Multiple kinds of location information may exist simultaneously.</p>
+</li>
+</ul><p>We do not recommend including resource-level location information within a "schema" attribute because:</p><ul>
+<li>
+<p>The structure of "schema" is undefined for Data Resource.</p>
+</li>
+<li>
+<p>A multi-column lat-lon location could not easily be described in Table Schema.</p>
+</li>
+</ul><h5 id="package-level-"spatial-profile"-attribute">Package-level "spatial-profile" attribute</h5><p>One of:</p>
+
+<div class="component figure"><figure><pre><code class="language-json">
+{
+
+  "spatial-profile": "tabular-points",
+  "spatial-profile": "simple-vector",
+  "spatial-profile": "raster",
+  "spatial-profile": "vector"
+
+}
+    </code></pre></figure></div>
+  <h5 id="resource-level-"locations"-attribute">Resource-level "locations" attribute</h5>
+
+
+<div class="component figure"><figure><pre><code class="language-js">
+  "resources": [
+    {
+      "path": "data.csv",
+      // REQUIRED (to use location information):
+      // Array of one or more sources of location information, within the resource.
+      // For instance, a resource may contain both point and boundary information,
+      // or two kinds of point information.
+      "locations": [{
+        // REQUIRED: location type specifier, one of:
+        // "lat-lon": point defined by two columns
+        // "boundary-id": linked boundary defined by column with IDs
+        // "geojson": geometry provided as geojson
+        "type": "lat-lon",
+        // other fields determined by location type
+        }
+      ]
+    }
+  ]
+</code></pre></figure></div>
+
+<h4 id="point-datasets">Point datasets</h4><p>Recommendation for creators: </p><ol>
+<li>
+<p>Point datasets SHOULD be published as Tabular Data Package, in CSV, with locations represented as "Latitude" and "Longitude" columns. </p>
+</li>
+<li>
+<p>These columns SHOULD be given appropriate types when such are supported in Table Schema.</p>
+</li>
+<li>
+<p>"locations" and "spatial-profile" metadata SHOULD be included, to indicate that the TDP is also a spatially-enriched dataset, and how to interpret the location information.</p>
+</li>
+<li>
+<p>For maximum reusability, a GeoJSON version of the data should also be included within the Data Package. (NOTE:  It cannot be included as a resource without breaking the rules of Tabular Resource, but can be included in the package nonetheless.)</p>
+</li>
+</ol><p>Currently, Table Schema supports "geopoint" and "geojson" location types, which we do not recommend. We propose individual "latitude" and "longitude" types.</p><h5 id="indicative-"locations"-specification">Indicative "locations" specification</h5>
+
+
+<div class="component figure"><figure><pre><code class="language-js">
+  "locations": [
+    {
+      "type": "lat-lon",
+      "fields": {
+        // REQUIRED: name of fields containing lat/lon (decimal degrees, eg "-37.8").
+        //TBD: should they default to "Longitude", "Latitude"?
+        "latitude": "lat,
+        "longitude": "lon"
+      },
+      // OPTIONAL:
+      // local path to equivalent representation in GeoJSON format, for convenience.
+      "geojson-path": "data.geojson",
+      // OPTIONAL, controlled vocab (TBD): the relationship of the location to
+      // each row, primarily in the case where there is more than one location.
+      // For instance, "start" and "end".
+      // "role": "start"
+      }
+    ]
+</code></pre></figure></div>
+
+<h4 id="line-and-polygon-"simple-vector"-datasets">Line and polygon ("simple vector") datasets</h4><p>The existing GeoJSON standard serves the need of sharing general-purpose vector data well.</p><p>Recommendation for creators:</p><ol>
+<li>
+<p>Simple vector datasets SHOULD be published as a GeoJSON file inside a Data Package. </p>
+</li>
+<li>
+<p>GeoJSON data SHOULD NOT be included inline in the Data Package descriptor.</p>
+</li>
+<li>
+<p>A "locations" attribute of type "geojson" SHOULD be included on the resource.</p>
+</li>
+<li>
+<p>Field-level descriptions MAY be included, using a "schema" attribute in Table Schema format. The location information itself does not count as a "field".</p>
+</li>
+</ol><p>Example of "locations" attribute:</p>
+
+<div class="component figure"><figure><pre><code class="language-json">
+"locations": {
+  "type": "geojson"
+  }
+</code></pre></figure></div>
+
+  <p>Example of "schema" attribute:</p>
+
+<div class="component figure"><figure><pre><code class="language-json">
+  "schema": {
+    "fields": [
+      {
+        "name": "name",
+        "description": "The park's official name."
+      },
+      {
+        "name": "areasqm",
+        "description": "The area of the park in square metres."
+      }
+    ]
+  }
+</code></pre></figure></div>
+
+
+    </p><h4 id="tabular-data-linked-to-standard-boundaries">Tabular data linked to standard boundaries</h4><p>We can break down the problem of linking tabular data to standard boundaries into two independent questions, following the Csv-geo-au model:</p><ol>
+<li>
+<p>How should the tabular data be formatted and described in order to indicate precisely how a given row links to a boundary in the real world?</p>
+</li>
+<li>
+<p>How should spatial representations of those boundaries be prepared and made linkable, so that correctly prepared tabular datasets can be visualised?</p>
+</li>
+</ol><p>We use the example of a dataset of populations by country. Countries can be unambiguously identified using three-letter codes (ISO 3166-1 alpha-3 (NOTE:  <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3</a>)), for instance TUR for Turkey.</p><p>Note that a row may have several boundary-linking columns, especially several administrative levels (such as local governments and states).</p><h5 id="preparing-boundary-linked-tabular-data">Preparing boundary-linked tabular data</h5><p>Recommendation for creators:</p><ol>
+<li>
+<p>Boundary-linked tabular data should be prepared as Tabular Data Package.</p>
+</li>
+<li>
+<p>A column containing the boundary IDs SHOULD be named as explicitly as possible (eg "Country ISO 3166-1 alpha-3 code")</p>
+</li>
+<li>
+<p>A "locations" attribute on the Tabular Resource indicates the boundary ID column</p>
+</li>
+</ol><p>Sample "locations" metadata:</p>
+
+
+<div class="component figure"><figure><pre><code class="language-js">
+  "locations": [
+    {
+      // REQUIRED: described above.
+      "type": "boundary-id",
+      // REQUIRED: the name of the field containing the identifiers.
+      "field": "Council ABS ID",
+      // REQUIRED: a codelist from a predefined (TBD) set, in hyphenated lower case.
+      // Colon (:) indicates a subset which is not always present. Possibilities that make immediate sense:
+      // "iso-3166-1:alpha-2": 2-letter country codes
+      // "iso-3166-1:alpha-3": 3-letter country codes
+      // "iso-3166-2": 5-, 6- or 7-letter character administrative subdivision codes (eg "FR-33")
+      // "nuts-1": 1st-level NUTS code for EU (eg "AT3" = Western Austria)
+      // "nuts-2": 2nd-level NUTS code for EU (eg "AT33" = Tyrol)
+      // "nuts-3": 3nd-level NUTS code for EU (eg "AT332" = Innsbruck)
+      // "csv-geo-au": Australian statistical and administrative boundaries as defined by csv-geo-au standard.
+      "codelist": "csv-geo-au:lga_code",
+      // OPTIONAL: an identifier for the specific version of the boundaries (often a year).
+      "version": "2011",
+      // OPTIONAL (TBD): local or web path to an actual source of those boundaries, in the absence of a codelist-resolving service.
+      // this could also support the (unverified) use case of attributes and boundaries supplied separately in the same DP.
+      "geometrypath": "http://..."
+    }
+  ]
+</code></pre></figure></div>
+
+
+<h5 id="providing-boundaries-for-linking">Providing boundaries for linking</h5><p>It is useful, but not essential, if there exist geospatial datasets corresponding to boundaries being linked to. (Without them, it is still useful to know that a given row contains information about a specific boundary. With them, it could be automatically visualised on a map.)</p><p>Defining exactly how this would work is beyond the scope of this report, but an indicative idea:</p><ul>
+<li>
+<p>Boundaries published as GeoJSON Data Packages, with metadata indicating which property contains the relevant codelist identifier.</p>
+</li>
+<li>
+<p>A set of identifiers managed, perhaps as a separate Frictionless Data specification (akin to CSV Dialect) which define the values for "codescheme", "codelist" and "version", and link to locations where those boundaries can be obtained.</p>
+</li>
+<li>
+<p>Perhaps services that provide all the boundaries on demand, as vector tiles, for immediate web visualisation.</p>
+</li>
+</ul><p>An example of this kind of mapping is included in TerriaJS’s regionMapping.json configuration file (NOTE:  <a href="https://github.com/TerriaJS/terriajs/blob/master/wwwroot/data/regionMapping.json" target="_blank">https://github.com/TerriaJS/terriajs/blob/master/wwwroot/data/regionMapping.json</a>).</p><p>Recommendation for Frictionless Data community:</p><ol>
+<li>
+<p>Develop and implement a standard for boundary codelist schemes and identifiers.</p>
+</li>
+<li>
+<p>Implement a service for resolving such identifiers to mappable geometries.</p>
+</li>
+</ol><p>An alternative approach would be to use Table Schema’s "foreignkey" (NOTE:  <a href="https://frictionlessdata.io/specs/table-schema/#foreign-keys" target="_blank">https://frictionlessdata.io/specs/table-schema/#foreign-keys</a>) element to link directly to a feature in an external Data Package containing the relevant geometry. This approach has several weaknesess:</p><ul>
+<li>
+<p>The "foreignkey" element does not explicitly support linking to external resources in this way.</p>
+</li>
+<li>
+<p>The tabular dataset would be linked to a specific file representation of the boundaries in question, rather than a semantic abstraction of them. This raises many problems such as establishing equivalency between different copies of the boundaries, and inability to link to boundaries which do not yet exist in a concrete file form.</p>
+</li>
+<li>
+<p>Setting metadata on a column’s "schema" definition wouldn’t work for point datasets (which would have location defined across two columns), so the two kinds of metadata would be inconsistent.</p>
+</li>
+</ul><h4 id="complex-spatial-data">Complex spatial data</h4><p>Finally there are all the kinds of spatial data which can’t be converted to GeoJSON either:</p><ul>
+<li>
+<p>Because the formats are fundamentally incompatible (such as raster data)</p>
+</li>
+<li>
+<p>Because it is considered impracticable or undesirable to do so for some reason. For instance, when bundling a third party’s data, it may be preferable not to manipulate the files themselves. Or when data in a certain format is intended for a certain community which prefers that data over GeoJSON.</p>
+</li>
+</ul><p>There has already been work done developing a "Geo Data Package" (discussion here (NOTE:  <a href="https://github.com/frictionlessdata/specs/issues/86" target="_blank">https://github.com/frictionlessdata/specs/issues/86</a>), sample outputs here (NOTE:  <a href="https://github.com/henrykironde/spatial-packages/tree/master/data" target="_blank">https://github.com/henrykironde/spatial-packages/tree/master/data</a>)). It does not appear to be formally documented.</p><p>The sample files demonstrate these attributes for Data Packages containing vector files:</p><ul>
+<li>
+<p>driver_name (eg "ESRI Shapefile")</p>
+</li>
+<li>
+<p>extent { xMax, xMin, yMax, yMin }</p>
+</li>
+<li>
+<p>format ("vector")</p>
+</li>
+<li>
+<p>spatial_ref (appears to be an Esri PROJCS[] string)</p>
+</li>
+<li>
+<p>resources</p>
+<ul>
+<li>geom_type: (eg "Point", "Polygon", "3D Polygon")</li>
+</ul>
+</li>
+</ul><p>And for raster files:</p><ul>
+<li>
+<p>driver: "EHdr"</p>
+</li>
+<li>
+<p>datum</p>
+</li>
+<li>
+<p>projection</p>
+</li>
+<li>
+<p>transform</p>
+</li>
+<li>
+<p>resources:</p>
+<ul>
+<li>
+<p>band_name</p>
+</li>
+<li>
+<p>no_data_value</p>
+</li>
+<li>
+<p>min</p>
+</li>
+<li>
+<p>max</p>
+</li>
+</ul>
+</li>
+</ul><p>We would suggest:</p><ul>
+<li>
+<p>If "driver_name" is a reference to a a GDAL format code (NOTE:  That is, a value in the "Code" column here: <a href="http://www.gdal.org/ogr_formats.html" target="_blank">http://www.gdal.org/ogr_formats.html</a> or <a href="http://www.gdal.org/formats_list.html" target="_blank">http://www.gdal.org/formats_list.html</a> ), then perhaps call it "gdal_format".</p>
+</li>
+<li>
+<p>Group the spatial data attributes together (eg, under a "spatial" object)</p>
+</li>
+<li>
+<p>Include an extent in unprojected (lat-long) coordinates (eg, "extent_latlong")</p>
+</li>
+<li>
+<p>Consider using a non-proprietary projection string, plus an EPSG code if relevant. (All obtainable from <a href="http://spatialreference.org" target="_blank">spatialreference.org</a>). Perhaps:</p>
+</li>
+</ul>
+
+<div class="component figure"><figure><pre><code class="language-json">
+spatial_ref: {
+  projcs: "...",
+  proj4: "...",
+  epsg: "..."
+}
+</code></pre></figure></div>
+<ul>
+<li>
+<p>Using a consistent approach to recording projection/transform/spatial reference system/datum information. It may be best to adopt the (now deprecated) <a href="https://geojson.org/geojson-spec.html#coordinate-reference-system-objects" target="_blank">CRS system</a> from GeoJSON (NOTE:  <a href="https://geojson.org/geojson-spec.html#coordinate-reference-system-objects" target="_blank">https://geojson.org/geojson-spec.html#coordinate-reference-system-objects</a>)</p>
+</li>
+<li>
+<p>Consider "geometry_type" rather than "geom_type", and whether an array of types is necessary to support mixed types.</p>
+</li>
+</ul>
+
 
         </div>
       </div>
